@@ -5,8 +5,8 @@ Feature: As Giga-Food
 Background:
   Given the following orders exist:
   | order_id | user_email           | order_date |
-  | 1        | asshole@example.com  | 2017-09-08 |
-  | 2        | butthole@example.com | 2017-09-07 |
+  | 1        | doe@example.com  | 2017-09-08 |
+  | 2        | john@example.com | 2017-09-07 |
 
 Scenario:
   Given I am on the "View order" page
