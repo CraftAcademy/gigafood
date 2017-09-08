@@ -1,51 +1,25 @@
 <h1>MENU</h1>
-
 <p class="center">Our menu is <strong>100% plant-based</strong> and <strong>vegan</strong>. We’re committed to always use organic ingredients as far as possibly possible. Our packaging is 100% compostable and our delivery service is made by cargo bike. All our food and desserts are made without white refined sugar and no added gluten.</p>
-
 <br>
 
 <h2>MAINS</h2>
 
-
-<div>
-  <div class="menu-item-form">
-    107 SEK <br>
-    <input class="q_text" type="text" name="" value="" id="dish_1"
-           placeholder="0" size="5" maxlength="4"
-           onblur="validateNumberOnBlur(this)" onkeyup="validateNumber(this)"
-           onclick="validateNumber(this)" onchange="validateNumber(this)" >
-    <button class="q_button" type="button" name="button" onclick="decreaseNumber('dish_1')"> - </button>
-    <button class="q_button" type="button" name="button" onclick="increaseNumber('dish_1')"> + </button>
-  </div>
-  <div class="menu-item-title">Rainbow Salad</div>
-  <div>Luxurious playful salad with loads of colorful greens. Served with green hummus, creamy cashew-dill-sauce, fennel, avocado, polka beat and nut n’ seed-sprinkle.</div>
-</div>
-<br>
-<div>
-  <div class="menu-item-form">
-    107 SEK <br>
-    <input class="q_text" type="text" name="" value="" id="dish_2"
-           placeholder="0" size="5" maxlength="4"
-           onblur="validateNumberOnBlur(this)" onkeyup="validateNumber(this)"
-           onclick="validateNumber(this)" onchange="validateNumber(this)" >      <button class="gigafood-button" type="button" name="button" onclick="decreaseNumber('dish_2')"> - </button>
-    <button class="q_button" type="button" name="button" onclick="increaseNumber('dish_2')"> + </button>
-  </div>
-  <div class="menu-item-title">Mexican Taco Bowl</div>
-  <div>Taco flavored sunflower mix with tomato and mango salsa, coriander, guacamole, cashew sour cream, greens and crunchy nachos.</div>
-</div>
-<br>
-<div>
-  <div class="menu-item-form">
-    <span class="price">109 SEK</span><br>
-    <input class="q_text" type="text" name="" value="" id="dish_3"
-           placeholder="0" size="5" maxlength="4"
-           onblur="validateNumberOnBlur(this)" onkeyup="validateNumber(this)"
-           onclick="validateNumber(this)" onchange="validateNumber(this)" >
-    <button class="q_button" type="button" name="button" onclick="decreaseNumber('dish_3')"> - </button>
-    <button class="q_button" type="button" name="button" onclick="increaseNumber('dish_3')"> + </button>
-  </div>
-  <div class="menu-item-title">Creamy Basil Pasta with Olives and Herbs</div>
-  <div>Zucchini and kelp noodle pasta in creamy pumpkin-basil-sauce. Served with olive tapenade, dijon-vinaigrette, avocado, spring onions and fresh herbs.</div>
+<div class="container">
+  <% @dishes.each do |dish| %>
+    <div>
+      <div class="menu-item-form">
+        <%= dish.price %> SEK <br>
+        <input class="q_text" type="text" name="" value="" id="dish_<%= dish.id %>"
+               placeholder="0" size="5" maxlength="4"
+               onblur="validateNumberOnBlur(this)" onkeyup="validateNumber(this)"
+               onclick="validateNumber(this)" onchange="validateNumber(this)" >
+        <button class="q_button" type="button" name="button" onclick="decreaseNumber('dish_1')"> - </button>
+        <button class="q_button" type="button" name="button" onclick="increaseNumber('dish_1')"> + </button>
+      </div>
+      <div class="menu-item-title"><%= dish.name %></div>
+      <div><%= dish.description %></div>
+    </div>
+  <% end %>
 </div>
 
 
