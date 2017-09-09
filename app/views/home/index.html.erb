@@ -9,7 +9,7 @@
 
 <% @dishes.each do |dish| %>
   <div class="clear">
-    <div class="menu-item-form">
+    <div class="menu-item-form" id="dish_item_<%= dish.id %>">
       <%= dish.price %> SEK <br>
       <input class="q_text" type="text" name="" value="" id="dish_<%= dish.id %>" placeholder="0" size="5"
              maxlength="4" data-minquantity="<%= dish.min_quantity %>" onblur="validateNumberOnBlur(this)"
@@ -23,6 +23,14 @@
 <% end %>
 
 
+<br>
+<br>
+
+<div class="float-right">
+  <button class="button" type="button" name="button"> Next </button>
+</div>
+<br>
+<div class="clear"></div>
 <script type="text/javascript" >
     function validateNumber(object)
     {
@@ -96,7 +104,6 @@
         {
           document.getElementById(dishId).value = val + 1;
         }
-
     }
 
 </script>
