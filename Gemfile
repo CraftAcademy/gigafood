@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 gem 'rails', '~> 5.1.3'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
@@ -17,6 +16,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'activeadmin'
 gem 'devise'
 gem 'rails-i18n', '~> 5.0.0'
+gem 'acts_as_shopping_cart'
 
 group :development, :test do
   gem 'factory_girl_rails'
