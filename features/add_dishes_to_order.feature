@@ -11,21 +11,13 @@ Feature: Allow end user to select dishes and quantities to order.
       | Dish 2       | Description for Dish 2  | 200   |  20          |
       | Dish 3       | Description for Dish 3  | 300   |  1           |
 
-  Scenario Outline: User can manipulate quantity with + and - buttons
+  Scenario: User can manipulate quantity with + and - buttons
     When I go to the landing page
     And I click on + for "Dish 1"
     And I click on + for "Dish 2"
     And I click on + for "Dish 2"
     And I click on "Next"
-    Then I should be on "order page"
+    Then I should be on order page
+    And I should see "Dish 1"
+    And I should see "Dish 2"
     And I should not see "Dish 3"
-    And I should see "<name>"
-    And I should see "<subtotal>"
-    Examples:
-    | name         | subtotal |
-    | Dish 1       | 100      |
-    | Dish 2       | 400      |
-
-  Scenario: The page should have a Next button to continue with order
-    When I go to the landing page
-    Then I should see the button "Next"
