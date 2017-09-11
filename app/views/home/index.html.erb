@@ -1,5 +1,7 @@
 <h1><%= I18n.t('main_title_order_form').html_safe %></h1>
-<p class="center"><%= I18n.t('intro_desc_order_form').html_safe %> </p>
+
+<p class="center"><%= t('intro_desc_order_form').html_safe %> </p>
+<p class="center"><%= t('minimum_order_form').html_safe %> </p>
 
 <h2>MAINS</h2>
 
@@ -18,12 +20,10 @@
   </div>
 <% end %>
 
-
 <br>
 
-
 <div class="float-right">
-  <button class="button" type="button" name="button"> Next </button>
+  <button class="button" type="button" name="button"> <%= t('next') %> </button>
 </div>
 <br>
 <br>

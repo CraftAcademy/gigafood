@@ -1,10 +1,10 @@
 en:
   main_title_order_form: "MENU"
-  intro_desc_order_form: "<p class='center'>Our menu is 100% plant-based and vegan. We’re committed to always use
+  intro_desc_order_form: "Our menu is 100% plant-based and vegan. We’re committed to always use
                           organic ingredients as far as possibly possible. Our packaging is 100%
                           compostable and our delivery service is made by cargo bike. All our food and
-                          desserts are made without white refined sugar and no added gluten. </p>
-                          <p class='center'>Minimum amount per dish to order - 10 servings. </p>"
+                          desserts are made without white refined sugar and no added gluten."
+  minimum_order_form:     "Minimum amount per dish to order - 10 servings."
 
   button:
     next: "Next"
