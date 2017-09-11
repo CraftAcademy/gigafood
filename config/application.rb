@@ -24,6 +24,9 @@ module Gigafood
       generate.controller_specs false
     end
 
+    config.i18n.available_locales = :sv
+    config.i18n.default_locales = :en
+
     config.generators.system_tests = nil
 
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
