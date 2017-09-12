@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
       end
     end
 
-    redirect_to orders_path
+    redirect_to order_path
   end
 
   def destroy

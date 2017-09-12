@@ -31,4 +31,4 @@ Feature: Allow end user to commit order
     And I fill in "invoice_city" with "Town"
     And I fill in "invoice_phone" with "555 123 55 11"
     And I fill in "invoice_email" with "invoice@hungrycorp.com"
-    And I click on "Submit"
+    And I click on "Submit Order"
