@@ -1,12 +1,12 @@
 Given(/^the following categories exist:$/) do |table|
-  table.hashes.each do |category|
-    FactoryGirl.create(:category, category)
+  table.hashes.each do | category |
+    Category.create(category)
   end
 end
 
-When(/^I press "([^"]*)" for category "([^"]*)"$/) do |arg1, arg2|
-  category = Category.find_by(name: category_name)
-  within("#category") do
+When(/^I press "([^"]*)" for "([^"]*)"$/) do |link, category|
+  category = Category.find_by(name: name)
+  within("#category_#{category.name}") do
     click_link_or_button link
   end
 end
