@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911114116) do
+ActiveRecord::Schema.define(version: 20170912100957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(version: 20170911114116) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "dishes", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -53,6 +60,22 @@ ActiveRecord::Schema.define(version: 20170911114116) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "min_quantity", default: 10
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "price"
+    t.datetime "order_date"
+    t.datetime "delivery_date"
+    t.text "address"
+    t.string "phone"
+    t.text "allergies"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "boxes"
+    t.string "status"
+    t.string "email"
   end
 
   create_table "shopping_cart_items", force: :cascade do |t|
