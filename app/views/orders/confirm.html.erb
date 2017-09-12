@@ -1,0 +1,8 @@
+<h1>Thanks!</h1>
+
+    <% @order.shopping_cart_items.each do |order_item| %>
+        <div>
+          <p><%= order_item.item.name %></p>
+          <p><%= order_item.item.description %></p>
+        </div>
+    <% end %>

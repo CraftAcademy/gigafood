@@ -20,9 +20,26 @@
   <div>Total price: <%= @order.total%></div>
 </div>
 
-<%= form_tag(confirm_path) do %>
 
-<div class="clear"></div>
+
+<div class="clear">
+
+  <%= form_for @order do |f| %>
+
+      <div><%= f.text_field :name, placeholder: 'hej' %></div>
+      <div><%= f.text_field :description, placeholder: 'hej' %></div>
+      <div><%= f.label :delivery_date, 'Delivery Date:' %></div>
+      <div><%= f.date_field :delivery_date %></div>
+      <div><%= f.text_field :price, placeholder: 'hej' %></div>
+      <div><%= f.date_field :order_date, placeholder: 'hej' %></div>
+      <div><%= f.text_field :address, placeholder: 'hej' %></div>
+      <div><%= f.text_field :phone, placeholder: 'hej' %></div>
+      <div><%= f.text_field :allergies, placeholder: 'hej' %></div>
+      <div><%= f.text_field :email, placeholder: 'hej' %></div>
+      <div><%= f.submit t('button.submit'), class: 'button float-right' %></div>
+
+<% end %>
+</div>
 
 <div class="float-left order-container">
   <h2>Allergies – No Problem!</h2>
@@ -35,8 +52,14 @@
 <div class="float-left order-container">
   <h2>Delivery</h2>
   Please specify details for delivery or pick-up. <br>
-    <input type="radio" name="delivery" value="pick_up" class="radio_style"> We’d like to pick up the order <br> ourselves at Tegelbacken 4A. <br>
-    <input type="radio" name="delivery" value="deliver" class="radio_style"> We'd like the order to be delivered <br> directly to us by cargo bike.
+  <input type="radio" id="deliveryChoice1"
+         name="delivery" value="pick_up">
+  <label for="deliveryChoice1">We’d like to pick up the order <br> ourselves at Tegelbacken 4A.</label>
+
+  <input type="radio" id="deliveryChoice2"
+         name="delivery" value="deliver">
+  <label for="deliveryChoice2">We'd like the order to be delivered <br> directly to us by cargo bike.</label>
+
   <br>
   Delivery date: <br>
   <input type="date" name="delivery[date]" id="delivery_date" value="" placeholder="Date"
@@ -74,7 +97,7 @@
          size="5" maxlength="25" style="width: 374px;"> <br> <br>
 </div>
 <div class="float-left order-container">
-  Payment information <br>
+  Payment information: <br>
   <input type="text" name="invoice[name]" id="invoice_name" value="" placeholder="Name"
          size="5" maxlength="25" style="width: 374px;"> <br>
   <input type="text" name="invoice[company]" id="invoice_company" value="" placeholder="Company/Organisation"
@@ -94,6 +117,4 @@
          size="5" maxlength="25" style="width: 374px;"> <br> <br>
 </div>
 
-<div><%= submit_tag t('button.submit'), class: 'button float-right' %></div>
 
-<% end %>

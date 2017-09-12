@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @order = get_order
     get_order.clear
 
     params["dishes"].each do |dish_key, dish_value|
@@ -20,9 +21,28 @@ class OrdersController < ApplicationController
       end
     end
 
-    redirect_to order_path
+    redirect_to orders_path
   end
 
   def destroy
   end
+
+  def update
+    @order = get_order
+    @order.update(order_params)
+    redirect_to confirm_order_path
+  end
+
+  def confirm
+
+    @order = Order.find(params[:id])
+
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:name, :description, :price, :order_date, :delivery_date, :address, :phone, :allergies, :email )
+  end
+
 end
