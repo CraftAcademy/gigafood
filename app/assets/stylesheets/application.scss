@@ -32,8 +32,13 @@ body {
 }
 
 .container {
-  margin-right: 10px;
-  margin-left: 10px;
+  width: 850px;
+  margin: auto;
+}
+
+.order-container {
+  margin-right: 20px;
+  width: 400px;
 }
 
 .menu-item-title {
@@ -92,12 +97,6 @@ input {
 
 input, .q_text, .q_button:hover, .q_button:focus {
     outline: none;
-}
-
-.radio_style {
-  text-indent: -24px;
-  padding-left: 24px
-
 }
 
 h1 {
