@@ -5,8 +5,8 @@ Given(/^the following categories exist:$/) do |table|
 end
 
 When(/^I press "([^"]*)" for "([^"]*)"$/) do |link, category|
-  category = Category.find_by(name: name)
-  within("#category_#{category.name}") do
+  cat = Category.find_by(name: category)
+  within("#category_#{cat.id}") do
     click_link_or_button link
   end
 end

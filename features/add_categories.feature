@@ -25,10 +25,10 @@ Feature: As gigafood, create, destroy and update categories
     When I press "Categories"
     And I press "Edit" for "Starter"
     And I fill in "Description" with "Description for Starter"
-    And I press "Update category"
+    And I press "Update Category"
     Then I should see "Category was successfully updated."
 
   Scenario: Delete category
     When I press "Categories"
-    And I press "Delete" for "category 4"
-    Then I should see "category was successfully destroyed."
+    And I press "Delete" for "Starter"
+    Then I should see "Category was successfully destroyed."
