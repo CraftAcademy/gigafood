@@ -5,7 +5,7 @@ Given(/^the following orders exist:$/) do |table|
 end
 
 When(/^I press "([^"]*)" for order "([^"]*)"$/) do |link, order_name|
-  order = Order.find_by(name: order_name)
+  order = Order.first #find_by(billing_name: order_name)
   within("#order_#{order.id}") do
     click_link_or_button link
   end

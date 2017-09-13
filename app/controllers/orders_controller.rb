@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
   end
 
   def update
-    @order = Order.find(params[:id])
+    @order = get_order
     @order.update(order_params)
     redirect_to confirm_order_path
   end
