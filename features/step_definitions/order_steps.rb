@@ -10,3 +10,7 @@ When(/^I press "([^"]*)" for order "([^"]*)"$/) do |link, order_name|
     click_link_or_button link
   end
 end
+
+And(/^I fill in Delivery Date with "([^"]*)"$/) do |date|
+  fill_in('order_delivery_date', with: date)
+end
