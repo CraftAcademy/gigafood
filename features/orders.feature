@@ -8,10 +8,10 @@ Feature: List orders
     And I'm loged in as admin user "admin@example.com"
     And I go to the dashboard
     And the following orders exist:
-    | delivery_contact_name    | delivery_date    | billing_email                  |
+    | billing_name             | delivery_date    | billing_email          |
     | Bob Schmob               | 2017-11-20 12:00 | bob.schmob@example.com |
     | John Smith               | 2017-10-10 12:00 | john.smith@example.com |
-    | Kari Lee                 | 2017-10-08 12:00 | kari.lee@example.com |
+    | Kari Lee                 | 2017-10-08 12:00 | kari.lee@example.com   |
 
   Scenario: View a list of orders
     When I press "Orders"
