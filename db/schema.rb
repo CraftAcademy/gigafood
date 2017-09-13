@@ -64,23 +64,7 @@ ActiveRecord::Schema.define(version: 20170913073744) do
     t.index ["category_id"], name: "index_dishes_on_category_id"
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.integer "price"
-    t.datetime "order_date"
-    t.datetime "delivery_date"
-    t.text "address"
-    t.string "phone"
-    t.text "allergies"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "boxes"
-    t.string "status"
-    t.string "email"
-  end
-
-  create_table "shopping_cart_items", force: :cascade do |t|
+  create_table "order_items", force: :cascade do |t|
     t.integer "owner_id"
     t.string "owner_type"
     t.integer "quantity"
@@ -92,9 +76,31 @@ ActiveRecord::Schema.define(version: 20170913073744) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "shopping_carts", force: :cascade do |t|
+  create_table "orders", force: :cascade do |t|
+    t.datetime "delivery_date"
+    t.text "allergies"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "boxes"
+    t.string "status"
+    t.string "email"
+    t.string "delivery_method"
+    t.string "delivery_name"
+    t.string "delivery_address"
+    t.string "delivery_postal_code"
+    t.string "delivery_city"
+    t.string "delivery_floor"
+    t.string "delivery_door_code"
+    t.string "delivery_contact_name"
+    t.string "delivery_contact_phone_number"
+    t.string "billing_name"
+    t.string "billing_company"
+    t.string "billing_org_nr"
+    t.string "billing_address"
+    t.string "billing_postal_code"
+    t.string "billing_city"
+    t.string "billing_phone"
+    t.string "billing_email"
   end
 
   add_foreign_key "dishes", "categories"
