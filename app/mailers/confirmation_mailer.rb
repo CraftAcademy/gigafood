@@ -17,8 +17,6 @@ class ConfirmationMailer < ApplicationMailer
 
   def move_by_bike_email(email, order)
     @order = order
-    #@url = "http://example.com/movebybike"
-    #@order.status = 'delivery request'
     mail(to: email, subject: 'Request for delivery from Gigafood')
   end
 end
