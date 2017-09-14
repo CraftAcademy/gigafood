@@ -13,10 +13,6 @@ ActiveAdmin.register Order do
     link_to 'Cancel Order', cancel_admin_order_path(resource), method: :put
   end
 
-  # action_item :order_items do
-  #   render order_items, method: :put
-  # end
-
   member_action :confirm, method: :put do
     @order = Order.find(params[:id])
     @order.status = 'approved'
@@ -39,6 +35,7 @@ ActiveAdmin.register Order do
       column :item
       column :price
       column :quantity
+      #row('delete') { link_to 'Delete', admin_order_item(order.shopping_cart_items.id) }
     end
 
     attributes_table do
