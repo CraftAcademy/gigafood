@@ -26,13 +26,18 @@ Background:
     | Dish 3  | 15         |
   And I go to the dashboard
 
-Scenario:
+Scenario: View dishes on order
   When I press "Orders"
-  Then show me the page
-  When I press "View" for order "Bob Schmob"
+  And I press "View" for order "Bob Schmob"
   Then I should see "Dish 1"
   And I should see "13"
   And I should see "Dish 2"
   And I should see "14"
   And I should see "Dish 3"
   And I should see "15"
+
+Scenario: Delete dishes from order
+  When I press "Orders"
+  And I press "View" for order "Bob Schmob"
+  And I press "Delete" for "Dish 2"
+  Then I should see "Order item was successfully destroyed."
