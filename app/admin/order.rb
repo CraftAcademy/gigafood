@@ -34,10 +34,13 @@ ActiveAdmin.register Order do
     table_for order.shopping_cart_items do
       column :item
       column :price
-      column :quantity
-      column :Edit { link_to 'Edit', admin_order_item_path(40), method: :put }
+      column :quantity do |order_item|
+        input :quantity, value: order_item.quantity
+      end
+      column :Delete do |order_item|
+        link_to 'Delete', admin_order_item_path(order_item), method: :delete
+      end
       column :Show { link_to 'Show', admin_order_item_path(40) }
-      column :Delete { link_to 'Delete', admin_order_item_path(19), method: :delete }
     end
 
     attributes_table do
