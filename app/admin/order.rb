@@ -40,7 +40,9 @@ ActiveAdmin.register Order do
       column :Delete do |order_item|
         link_to 'Delete', admin_order_item_path(order_item), method: :delete
       end
-      column :Show { link_to 'Show', admin_order_item_path(40) }
+      column :Show do  |order_item|
+        link_to 'Show', admin_order_item_path(order_item)
+      end
     end
 
     attributes_table do
