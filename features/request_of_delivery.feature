@@ -23,17 +23,6 @@ Feature: Request of transportation mail
       And I click on "Update"
       Then I should see "Order was successfully updated"
       When I click on "Confirm Order"
-      And "boka@movebybike.se" should receive an email
+      Then "boka@movebybike.se" should receive an email
       And "boka@movebybike.se" should see "Request for delivery from Gigafood" in the subject
-      And "boka@movebybike.se" should see "Request for delivery according to the following: " in the email
-      And "boka@movebybike.se" should see "delivery_date" with "2017-11-20" in the email
-      And "boka@movebybike.se" should see "delivery_time" with "12:00" in the email
-      And "boka@movebybike.se" should see "Number of boxes" with "15" in the email
-      And "boka@movebybike.se" should see "delivery_name" with "Hungry corp Inc" in the email
-      And "boka@movebybike.se" should see "delivery_address" with "Street 42" in the email
-      And "boka@movebybike.se" should see "delivery_postal_code" with "123 45" in the email
-      And "boka@movebybike.se" should see "delivery_city" with "Town" in the email
-      And "boka@movebybike.se" should see "delivery_floor" with "3" in the email
-      And "boka@movebybike.se" should see "delivery_door_code" with "1111" in the email
-      And "boka@movebybike.se" should see "delivery_contact_name" with "John Doe" in the email
-      And "boka@movebybike.se" should see "delivery_phone_number" with "555 123 45 67" in the email
+      And "boka@movebybike.se" should see "Thanks!" in the email
