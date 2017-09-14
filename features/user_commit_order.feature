@@ -14,6 +14,7 @@ Feature: Allow end user to commit order
     And I click on + for "Dish 1"
     And I click on "Next"
     And I fill in Delivery Date with "2017-11-10"
+    
 
     And I fill in "Delivery Name" with "Hungry corp Inc"
     And I fill in "Delivery Address" with "Street 42"
@@ -31,5 +32,6 @@ Feature: Allow end user to commit order
     And I fill in "Billing City" with "Town"
     And I fill in "Billing Contact Phone" with "555 123 55 11"
     And I fill in "Billing email" with "invoice@hungrycorp.com"
+    And I select "Delivery" as "order_delivery_method"
     And I click on "Submit Order"
     Then I should see "Thanks!"
