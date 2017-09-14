@@ -30,15 +30,14 @@ ActiveAdmin.register Order do
   end
 
   show do
+
     h3 'Order Items'
     table_for order.shopping_cart_items do
       column :item
       column :price
-      column :quantity do |order_item|
-        input :quantity, value: order_item.quantity
-      end
+      column :quantity
       column :Delete do |order_item|
-        link_to 'Delete', admin_order_item_path(order_item), method: :delete
+        link_to 'Delete', admin_order_item_path(order_item), method: :delete, id: "delete_#{order_item.id}"
       end
       column :Show do  |order_item|
         link_to 'Show', admin_order_item_path(order_item)

@@ -39,5 +39,5 @@ Scenario: View dishes on order
 Scenario: Delete dishes from order
   When I press "Orders"
   And I press "View" for order "Bob Schmob"
-  And I press "Delete" for "Dish 2"
+  And I click Delete for "Dish 2"
   Then I should see "Order item was successfully destroyed."
