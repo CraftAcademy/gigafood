@@ -13,7 +13,6 @@ Feature: Request of transportation mail
       | John Smith   | 2017-10-05 11:00 | 2017-10-10 12:00 | john.smith@example.com |
       | Kari Lee     | 2017-10-03 14:00 | 2017-10-08 12:00 | kari.lee@example.com   |
 
-    #And "Bob Schmob" has selected "Delivery" button on the "Confirmation page"
 
 
   Scenario: Send request mail to delivery company
