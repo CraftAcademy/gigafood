@@ -39,7 +39,6 @@ ActiveAdmin.register Order do
   end
 
   show do
-
     h3 'Order Items'
     table_for order.shopping_cart_items do
       column :item
