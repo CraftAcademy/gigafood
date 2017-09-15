@@ -54,12 +54,11 @@ ActiveAdmin.register Order do
       column :allergies
       column :delivery_date
       column :delivery_method
-      column :delivery_city
-      column :billing_company
-      column :billing_email
+      column :billing_name
       column :allergies
       column :boxes
       column :status
+      actions
   end
 
 
