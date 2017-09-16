@@ -39,6 +39,6 @@ Then(/^Starter should be displayed before Main$/) do
   expect(page).to have_content(/Starter(.|\n)+?Main/i)
 end
 
-Then(/^Tomato should be displayed before Corn last$/) do
+Then(/^Tomato should be displayed before Corn$/) do
   expect(page).to have_content(/Tomato(.|\n)+?Corn/i)
 end

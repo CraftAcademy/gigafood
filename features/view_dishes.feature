@@ -11,7 +11,7 @@ Feature: List dishes on landing page
 
     And the following dishes exist:
       | name        | description            | price | min_quantity | category | sort_key |
-      | Start first | Description for Dish 1 | 100   | 10           | Starter  | 1        |
+      | Start       | Description for Dish 1 | 100   | 10           | Starter  | 1        |
       | Corn        | Description for Dish 2 | 200   | 10           | Main     | 2        |
       | Tomato      | Description for Dish 3 | 300   | 20           | Main     | 1        |
 
@@ -26,12 +26,12 @@ Feature: List dishes on landing page
 
     Examples:
       | name        | description            | price |
-      | Start first | Description for Dish 1 | 100   |
+      | Start       | Description for Dish 1 | 100   |
       | Corn        | Description for Dish 2 | 200   |
       | Tomato      | Description for Dish 3 | 300   |
 
     Scenario:
       When I go to the landing page
       Then Starter should be displayed before Main
-      And Tomato should be displayed before Corn last
+      And Tomato should be displayed before Corn
 
