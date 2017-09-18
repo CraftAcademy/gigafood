@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/ayann/active_admin_flat_skin.git
+  revision: 89692041059b20e186426bf19cb60da3b8a6fdeb
+  specs:
+    active_admin_flat_skin (0.1.2)
+      font-awesome-rails (~> 4.6, >= 4.6.3.0)
+
+GIT
   remote: https://github.com/dabit/acts_as_shopping_cart.git
   revision: ac83c170f3a95a97117b4679d0d094186afd71fc
   branch: rails51
@@ -42,7 +49,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    active_admin_flat_skin (0.1.2)
     activeadmin (1.1.0)
       arbre (>= 1.1.1)
       coffee-rails
@@ -155,6 +161,8 @@ GEM
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
     ffi (1.9.18)
+    font-awesome-rails (4.7.0.2)
+      railties (>= 3.2, < 5.2)
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
@@ -394,7 +402,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_admin_flat_skin
+  active_admin_flat_skin!
   activeadmin
   acts_as_shopping_cart!
   aws-sdk (~> 2.10, >= 2.10.27)
