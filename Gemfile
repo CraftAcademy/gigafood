@@ -15,9 +15,10 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'activeadmin'
 gem 'devise'
-gem 'active_admin_flat_skin'
+gem 'active_admin_flat_skin', github: 'ayann/active_admin_flat_skin'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'acts_as_shopping_cart', github: 'dabit/acts_as_shopping_cart', branch: 'rails51'
+gem 'responsive_active_admin'
 
 # Attachments
 gem 'paperclip', '~> 5.0.0'
