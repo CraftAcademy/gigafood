@@ -13,12 +13,20 @@ ActiveAdmin.register Order do
     link_to 'Cancel Order', cancel_admin_order_path(resource), method: :put
   end
 
-  action_item :generate_invoice, only: :show do
+  action_item :generate_invoice, only: :show, if: proc { !resource.has_invoice? } do
     link_to 'Generate Invoice', generate_invoice_order_path, method: :put
   end
 
-  action_item :generate_invoice, only: :show, if: proc { resource.has_invoice? } do
-    link_to 'View Invoice', resource.attachments.where(file_type: 'invoice').first.file.url, target: '_blank', rel: 'nofollow'
+  action_item :generate_menu, only: :show, if: proc { !resource.has_menu? } do
+    link_to 'Generate Menu', generate_menu_order_path, method: :put
+  end
+
+  action_item :view_invoice, only: :show, if: proc { resource.has_invoice? } do
+    link_to 'View Invoice', resource.attachments.where(file_type: 'invoice').first.file.url, target: '_blank', rel: 'nofollow', style: 'background-color: green !Important;'
+  end
+
+  action_item :view_menu, only: :show, if: proc { resource.has_menu? } do
+    link_to 'View Menu', resource.attachments.where(file_type: 'menu').first.file.url, target: '_blank', rel: 'nofollow', style: 'background-color: green !Important;'
   end
 
   member_action :confirm, method: :put do
@@ -38,6 +46,22 @@ ActiveAdmin.register Order do
     redirect_to resource_path, notice: "Canceled!"
   end
 
+  index do
+    selectable_column
+    column :id do |order|
+      link_to 'Order: ' + order.id.to_s, admin_order_path(order)
+    end
+    column :allergies
+    column :delivery_date
+    column :delivery_method
+    column :billing_name
+    column :allergies
+    column :boxes
+    column :status
+    actions
+  end
+
+
   show do
     h3 'Order Items'
     table_for order.shopping_cart_items do
@@ -47,7 +71,8 @@ ActiveAdmin.register Order do
       column :Delete do |order_item|
         link_to 'Delete', admin_order_item_path(order_item), method: :delete, id: "delete_#{order_item.id}"
       end
-      column :Show do  |order_item|
+
+      column :Show do |order_item|
         link_to 'Show', admin_order_item_path(order_item)
       end
     end
