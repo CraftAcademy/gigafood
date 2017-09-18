@@ -1,5 +1,5 @@
 ActiveAdmin.register Order do
-
+  menu priority: 6
   permit_params :delivery_date, :delivery_method, :delivery_name, :delivery_address, :delivery_postal_code, :delivery_city,
                 :delivery_floor, :delivery_door_code, :delivery_contact_name, :delivery_contact_phone_number, :billing_name,
                 :billing_company, :billing_org_nr, :billing_address, :billing_postal_code, :billing_city, :billing_phone,
