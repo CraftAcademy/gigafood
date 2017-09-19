@@ -43,7 +43,7 @@ ActiveAdmin.register Order do
     @order.status = 'canceled'
     @order.save
     ConfirmationMailer.cancelation_email(@order).deliver
-    redirect_to resource_path, notice: "Canceled!"
+    redirect_to resource_path, notice: 'Canceled!'
   end
 
   index do
@@ -68,11 +68,11 @@ ActiveAdmin.register Order do
       column :item
       column :price
       column :quantity
-      column :Delete do |order_item|
+      column :delete do |order_item|
         link_to 'Delete', admin_order_item_path(order_item), method: :delete, id: "delete_#{order_item.id}"
       end
 
-      column :Show do |order_item|
+      column :show do |order_item|
         link_to 'Show', admin_order_item_path(order_item)
       end
     end
