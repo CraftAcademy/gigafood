@@ -1,3 +1,4 @@
 ActiveAdmin.register Dish do
-  permit_params :name, :description, :price, :min_quantity, :category_id
+  menu priority: 4
+  permit_params :name, :description, :price, :min_quantity, :category_id, :sort_key
 end

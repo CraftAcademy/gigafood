@@ -1,5 +1,5 @@
 ActiveAdmin.register Order do
-
+  menu priority: 6
   permit_params :delivery_date, :delivery_method, :delivery_name, :delivery_address, :delivery_postal_code, :delivery_city,
                 :delivery_floor, :delivery_door_code, :delivery_contact_name, :delivery_contact_phone_number, :billing_name,
                 :billing_company, :billing_org_nr, :billing_address, :billing_postal_code, :billing_city, :billing_phone,
@@ -13,20 +13,20 @@ ActiveAdmin.register Order do
     link_to 'Cancel Order', cancel_admin_order_path(resource), method: :put
   end
 
-  action_item :generate_invoice, only: :show do
+  action_item :generate_invoice, only: :show, if: proc { !resource.has_invoice? } do
     link_to 'Generate Invoice', generate_invoice_order_path, method: :put
   end
 
-  action_item :generate_menu, only: :show do
+  action_item :generate_menu, only: :show, if: proc { !resource.has_menu? } do
     link_to 'Generate Menu', generate_menu_order_path, method: :put
   end
 
   action_item :view_invoice, only: :show, if: proc { resource.has_invoice? } do
-    link_to 'View Invoice', resource.attachments.where(file_type: 'invoice').first.file.url, target: '_blank', rel: 'nofollow'
+    link_to 'View Invoice', resource.attachments.where(file_type: 'invoice').first.file.url, target: '_blank', rel: 'nofollow', style: 'background-color: green !Important;'
   end
 
   action_item :view_menu, only: :show, if: proc { resource.has_menu? } do
-    link_to 'View Invoice', resource.attachments.where(file_type: 'menu').first.file.url, target: '_blank', rel: 'nofollow'
+    link_to 'View Menu', resource.attachments.where(file_type: 'menu').first.file.url, target: '_blank', rel: 'nofollow', style: 'background-color: green !Important;'
   end
 
   member_action :confirm, method: :put do
@@ -43,20 +43,36 @@ ActiveAdmin.register Order do
     @order.status = 'canceled'
     @order.save
     ConfirmationMailer.cancelation_email(@order).deliver
-    redirect_to resource_path, notice: "Canceled!"
+    redirect_to resource_path, notice: 'Canceled!'
   end
 
-  show do
+  index do
+    selectable_column
+    column :id do |order|
+      link_to 'Order: ' + order.id.to_s, admin_order_path(order)
+    end
+    column :allergies
+    column :delivery_date
+    column :delivery_method
+    column :billing_name
+    column :allergies
+    column :boxes
+    column :status
+    actions
+  end
 
+
+  show do
     h3 'Order Items'
     table_for order.shopping_cart_items do
       column :item
       column :price
       column :quantity
-      column :Delete do |order_item|
+      column :delete do |order_item|
         link_to 'Delete', admin_order_item_path(order_item), method: :delete, id: "delete_#{order_item.id}"
       end
-      column :Show do  |order_item|
+
+      column :show do |order_item|
         link_to 'Show', admin_order_item_path(order_item)
       end
     end

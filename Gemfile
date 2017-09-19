@@ -15,20 +15,26 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'activeadmin'
 gem 'devise'
-gem 'active_admin_flat_skin'
+gem 'active_admin_flat_skin', github: 'ayann/active_admin_flat_skin'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'acts_as_shopping_cart', github: 'dabit/acts_as_shopping_cart', branch: 'rails51'
+gem 'responsive_active_admin'
+gem 'active_admin_datetimepicker'
 
 # Attachments
 gem 'paperclip', '~> 5.0.0'
 gem 'aws-sdk', '~> 2.10', '>= 2.10.27'
 gem 'prawn-rails'
 
+# Active Record Translations
+gem 'i18n-active_record', require: 'i18n/active_record'
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'coveralls', require: false
   gem 'rspec-rails'
-  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
+  gem 'shoulda-callback-matchers'
   gem 'cucumber-rails', require: false
   gem 'launchy'
   gem 'pry-byebug'
