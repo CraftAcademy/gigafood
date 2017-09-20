@@ -1,6 +1,6 @@
 # Gigafood
 
-GigaFood is a catering businessthat creates organic plant-based vegan dishes that are marvelous to eat, high in nutrition, good for your health and sustainable for the planet.
+GigaFood is a catering business that creates organic plant-based vegan dishes that are marvelous to eat, high in nutrition, good for your health and sustainable for the planet.
 
 ## Functionality
 
