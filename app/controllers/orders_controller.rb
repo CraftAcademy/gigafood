@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
       dish_id = dish_key[5, dish_key.length].to_i
       dish = Dish.find(dish_id)
       if dish_value.to_i > 0
-        flash[:alert] = 'Item not added, try again!' unless @order.add(dish, dish.price, dish_value.to_i)
+        @order.add(dish, dish.price, dish_value.to_i)
       end
     end
 
