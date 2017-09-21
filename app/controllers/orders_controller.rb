@@ -14,7 +14,6 @@ class OrdersController < ApplicationController
       dish = Dish.find(dish_id)
       if dish_value.to_i > 0
         if @order.add(dish, dish.price, dish_value.to_i)
-          #flash[:notice] = "#{dish.name} was successfully added to order!"
         else
           flash[:alert] = 'Item not added, try again!'
         end
