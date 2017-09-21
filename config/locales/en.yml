@@ -1,59 +1,60 @@
 en:
 
   gigafood:
-    email: "hello@gigafood.se"
-    phone_number: "+46 (0) 8 120 543 76"
-    web_address: "www.gigafood.com"
+    email: 'hello@gigafood.se'
+    phone_number: '+46 (0) 8 120 543 76'
+    web_address: 'www.gigafood.com'
 
   lable:
-    dish: "Dish"
-    quantity: "Quantity"
-    price: "Price"
+    dish: 'Dish'
+    quantity: 'Quantity'
+    price: 'Price'
 
   menu:
-    main_header: "ORDER"
-    main_intro_text: "Our menu is 100% plant-based and vegan. We’re committed to always
+    main_header: 'ORDER'
+    main_intro_text: 'Our menu is 100% plant-based and vegan. We’re committed to always
       use organic ingredients as far as possibly possible. Our packaging is 100% compostable
       and our delivery service is made by cargo bike. All our food and desserts are made without
-      white refined sugar and no added gluten."
-    min_dish_order_quantity: "Minimum order of 1 portions."
-    proceed_button: "Next"
+      white refined sugar and no added gluten.'
+    dish_min_quantity: 'Minimum order of %{min_count} portions.'
+    proceed_button: 'Next'
 
   order:
-    main_header: "ORDER"
-    subtotal: "Price:"
+    main_header: 'ORDER'
     error: 'The order contains no items. No reason to generate an empty menu'
-    tax: "Tax (VAT):"
-    total: "Total price:"
-    allergy_header: "Allergies – No Problem!"
-    allergy_body: "Please specify any allergies:"
-    delivery_info_header: "Delivery Information"
-    delivery_pickup: "We’d like to pick up the order ourselves at Tegelbacken 4A"
+    subtotal: 'Total:'
+    tax: 'VAT 12%:'
+    total: 'Total price inc. VAT:'
+    allergy_header: 'Allergies – No Problem!'
+    allergy_body: 'Please specify any allergies:'
+    delivery_info_header: 'Delivery Information'
+    delivery_pickup: "We'd like to pick up the order ourselves at Tegelbacken 4A"
     delivery_deliver: "We'd like the order to be delivered directly to us by cargo bike."
-    billing_header: "Billing address"
-    billing_name: "Billing Name"
-    billing_company: "Billing Company"
-    billing_org_number: "Billing Organisations Number"
-    billing_address: "Billing Address"
-    billing_postal_code: "Postal Code"
-    billing_contact_phone: "Billing Contact Phone"
-    billing_email: "Billing email"
-    delivery_address: "Delivery address"
-    delivery_name: "Delivery Name"
-    delivery_address: "Delivery Address"
-    delivery_postal_code: "Delivery Postal Code"
-    delivery_city: "Delivery City"
-    delivery_door_code: "Delivery Door Code"
-    delivery_floor: "Delivery Floor"
-    delivery_contact_name: "Delivery Contact Name"
-    delivery_contact_phone: "Delivery Contact Phone"
-    submit_order_button: "Submit Order"
+    billing_header: 'Billing address'
+    billing_name: 'Billing Name'
+    billing_company: 'Billing Company'
+    billing_org_number: 'Billing Organisation Number'
+    billing_address: 'Billing Address'
+    billing_postal_code: 'Billing_Postal_Code'
+    billing_city: 'Billing City'
+    billing_contact_phone: 'Billing Contact Phone'
+    billing_email: 'Billing email'
+    delivery_header: 'Delivery address'
+    delivery_name: 'Delivery Name'
+    delivery_address: 'Delivery Address'
+    delivery_postal_code: 'Delivery_Postal_Code'
+    delivery_city: 'Delivery City'
+    delivery_door_code: 'Delivery Door Code'
+    delivery_floor: 'Delivery Floor'
+    delivery_contact_name: 'Delivery Contact Name'
+    delivery_contact_phone: 'Delivery Contact Phone'
+    submit_order_button: 'Submit Order'
 
   confirm:
-    main_header: "Thanks for ordering from Gigafood!"
-    message_body: "A confirmation email will be sent to you as soon as your
+    main_header: 'Thanks for ordering from Gigafood!'
+    message_body: 'A confirmation email will be sent to you as soon as your
       booking is confirmed. Please contact us if you have any questions.
-      We’d love to hear from you! /The Gigafood-team"
+      We’d love to hear from you! /The Gigafood-team'
 
   invoice:
     header: 'Invoice'
