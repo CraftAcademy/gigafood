@@ -29,7 +29,7 @@
 <%= form_for @order do |f| %>
   <div class="float-left order-container">
     <h4><%= t('order.allergy_header') %></h4>
-    <p><%= t('order.allergy_body') %>:</p>
+    <p><%= t('order.allergy_body') %></p>
     <%= f.text_area :allergies, placeholder: 'Allergies', cols: 50, rows: 6 %>
   </div>
 
