@@ -25,6 +25,7 @@ class OrdersController < ApplicationController
 
   def update
     @order = get_order
+    
     if @order.update(order_params)
       redirect_to confirm_order_path
     else
