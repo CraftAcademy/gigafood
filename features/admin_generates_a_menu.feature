@@ -11,9 +11,9 @@ Feature: Admin generates a menu for a specific order
       | Mains    | Description for mains... |
 
     And the following dishes exist:
-      | name      | description            | price | min_quantity | category |
-      | Starter   | Description for Dish 1 | 100   | 10           | Starters |
-      | Main dish | Description for Dish 2 | 200   | 10           | Mains    |
+      | name      | description                                                                                                                                                                               | price | min_quantity | category |
+      | Starter   | Really really long description for this dish explaining how awasome it tastes and looks. We need this multi line description to test what happends if the table is overlaping the footer. | 100   | 10           | Starters |
+      | Main dish | Description for Dish 2                                                                                                                                                                    | 200   | 10           | Mains    |
 
     And the following orders exist:
       | billing_name | delivery_date    | billing_email          |

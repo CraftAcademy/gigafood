@@ -218,9 +218,9 @@ class PdfGeneratorService
     generated_file = File.open(Rails.root.join(filename))
     if @order.attachments.create(file: generated_file, file_type: file_type)
       # Delete the generated file. Disabled while testing
-      if File.exist?(generated_file)
-        File.delete(generated_file)
-      end
+      # if File.exist?(generated_file)
+      #   File.delete(generated_file)
+      # end
     end
   end
 
