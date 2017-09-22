@@ -34,6 +34,11 @@ Given(/^an admin exists with email "([^"]*)" and password "([^"]*)"$/) do |email
   @admin = FactoryGirl.create(:admin_user, email: email, password: password)
 end
 
-And(/^I'm loged in as admin user "([^"]*)"$/) do |email|
+And(/^I'm logged in as admin user "([^"]*)"$/) do |email|
+  login_as(@admin, scope: :admin_user)
+end
+
+
+And(/^I'm logged in as admin$/) do
   login_as(@admin, scope: :admin_user)
 end

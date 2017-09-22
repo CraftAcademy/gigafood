@@ -5,6 +5,7 @@ Given(/^the following dishes exist:$/) do |table|
       hash = dish.except!(dish[:category]).merge(category: category)
       FactoryGirl.create(:dish, hash)
     else
+      binding.pry
       FactoryGirl.create(:dish, dish)
     end
   end
