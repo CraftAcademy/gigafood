@@ -26,7 +26,6 @@ class OrdersController < ApplicationController
   def update
     @order = get_order
     if @order.update(order_params)
-      @order.update(delivery_method: params[:delivery_method])
       redirect_to confirm_order_path
     else
       flash[:alert] = 'Error when saving order!'
