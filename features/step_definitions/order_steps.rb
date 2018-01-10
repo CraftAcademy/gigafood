@@ -53,6 +53,11 @@ Given(/^"([^"]*)"'s order contains no items$/) do |billing_name|
   @order.clear if @order.shopping_cart_items
 end
 
+Then(/^I select "([^"]*)" and fill in quantity with "([^"]*)"$/) do |option, quantity|
+  # select div that contains cutlery radio button
+  # select cutlery option
+  # fill in quantity
+end
 
 And(/^I fill in all relevant fields and submit the order$/) do
   steps %q{
