@@ -22,19 +22,22 @@
     <div><strong><%= t('order.total') %> <%= humanized_money_with_symbol @order.total %></strong></div>
   </span>
 </div>
-<br>
 
-<%= render 'order_info' %>
+<br>
 
 
 <div class="clear">&nbsp;</div>
 <hr>
 <%= form_for @order do |f| %>
   <%= label_tag(:cutlery_quantity, 'Do you need cutlery?') %>
-  <%= f.number_field(:cutlery_quantity ) %>
+  <%= f.number_field :cutlery_quantity %>
   <%= f.hidden_field :status, placeholder: 'Status', value: 'submitted' %>
-  <%= f.button 'Add Cutlery', class: 'button float-right' %>
+  <% if @order.shopping_cart_items.find_by(item_id: Dish.find_by(name: "Cutlery").id) %>
+    <%= f.submit 'Remove Cutlery', class: 'button float-right' %>
+  <% end %>
+  <%= f.submit 'Add Cutlery', class: 'button float-right' %>
 <% end %>
+
 
 <%= form_for @order do |f| %>
   <div class="float-left order-container">
@@ -58,7 +61,7 @@
 
   <div class="float-left order-container">
     <h4><%= t('order.delivery_info_header') %>:</h4>
-    <%= f.text_field :billing_name, placeholder: t('order.billing_name'), class: 'input-wide' %>
+    <%= f.text_field :billing_name, placeholder: t('order.billing_name'), class: 'input-wide', required: true %>
     <%= f.text_field :billing_company, placeholder: t('order.billing_company'), class: 'input-wide' %>
     <%= f.text_field :billing_org_nr, placeholder: t('order.billing_org_number'), class: 'input-wide' %>
     <%= f.text_field :billing_address, placeholder: t('order.billing_address'), class: 'input-wide' %>

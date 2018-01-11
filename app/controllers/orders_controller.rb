@@ -24,11 +24,17 @@ class OrdersController < ApplicationController
   end
 
   def update
+    # binding.pry
     @order = get_order
     if params[:commit] == 'Add Cutlery'
       quantity = params[:order][:cutlery_quantity].to_i
       cutlery = Dish.find_by(name: 'Cutlery')
-      @order.add(cutlery, 10, quantity)
+      @order.add(cutlery, 2, quantity)
+      # binding.pry
+      redirect_to orders_path
+    elsif params[:commit] == 'Remove Cutlery'
+      cutlery = Dish.find_by(name: 'Cutlery')
+      @order.remove(cutlery, @order.shopping_cart_items.last.quantity) # needs refactoring to make sure we have cutlery selected
       redirect_to orders_path
     else
       if @order.update(order_params)
