@@ -25,12 +25,18 @@ class OrdersController < ApplicationController
 
   def update
     @order = get_order
-
-    if @order.update(order_params)
-      redirect_to confirm_order_path
-    else
-      flash[:alert] = 'Error when saving order!'
+    if params[:commit] == 'Add Cutlery'
+      quantity = params[:order][:cutlery_quantity].to_i
+      cutlery = Dish.find_by(name: 'Cutlery')
+      @order.add(cutlery, 10, quantity)
       redirect_to orders_path
+    else
+      if @order.update(order_params)
+        redirect_to confirm_order_path
+      else
+        flash[:alert] = 'Error when saving order!'
+        redirect_to orders_path
+      end
     end
   end
 
