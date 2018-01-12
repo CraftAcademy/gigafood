@@ -94,22 +94,46 @@
 
 <script type="text/javascript">
 
-  billing_name
-    billing_company
-   billing_org_nr
-    billing_address
-    billing_postal_code
-    billing_city
-    billing_phone
-  billing_email
+  var billing = ['billing_name',
+      'billing_company',
+      'billing_org_nr',
+      'billing_address',
+      'billing_postal_code',
+      'billing_city',
+      'billing_phone',
+      'billing_email'
+  ];
+  var delivery = [ 'delivery_name',
+      'delivery_address',
+      'delivery_postal_code',
+      'delivery_city','delivery_floor',
+      'delivery_door_code',
+      'delivery_contact_name',
+      'delivery_contact_phone_number'
+  ];
 
   function saveData() {
-      var b_name = document.getElementById('billing_name').value;
-      localStorage.setItem('billing_name', b_name);
+      billing.forEach(function(obj) {
+          var element_value = document.getElementById(obj).value;
+          localStorage.setItem(obj, element_value);
+      });
+      if (document.getElementById('delivery_address_fields')) {
+          delivery.forEach(function (obj) {
+              var element_value = document.getElementById(obj).value;
+              localStorage.setItem(obj, element_value);
+          })
+      }
   }
 
   function loadData() {
-      document.getElementById('billing_name').value = localStorage.getItem('billing_name')
+      billing.forEach(function(obj) {
+          document.getElementById(obj).value = localStorage.getItem(obj)
+      });
+      if (document.getElementById('delivery_address_fields')) {
+          delivery.forEach(function(obj) {
+              document.getElementById(obj).value = localStorage.getItem(obj)
+          })
+      }
   }
 
   if (localStorage.getItem('billing_name') !== '') {
