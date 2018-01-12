@@ -43,12 +43,12 @@
   <div class="float-left order-container">
     <h4><%= t('order.allergy_header') %></h4>
     <p><%= t('order.allergy_body') %></p>
-    <%= f.text_area :allergies, placeholder: 'Allergies', cols: 50, rows: 6%>
+    <%= f.text_area :allergies, placeholder: 'Allergies', cols: 50, rows: 6 %>
   </div>
 
   <div class="float-left order-container">
     <h4><%= t('order.delivery_info_header') %>:</h4>
-    <%= f.datetime_field :delivery_date, placeholder: t('delivery_date'), class: 'input-wide'%>
+    <%= f.datetime_field :delivery_date, placeholder: t('delivery_date'), class: 'input-wide' %>
     <br>
     <%= f.radio_button(:delivery_method, 'pickup') %>
     <%= label_tag(:delivery_method_pickup, t('order.delivery_pickup').html_safe) %>
@@ -61,7 +61,7 @@
 
   <div class="float-left order-container">
     <h4><%= t('order.delivery_info_header') %>:</h4>
-    <%= f.text_field :billing_name, placeholder: t('order.billing_name'), class: 'input-wide',required: true %>
+    <%= f.text_field :billing_name, placeholder: t('order.billing_name'), class: 'input-wide', required: true %>
     <%= f.text_field :billing_company, placeholder: t('order.billing_company'), class: 'input-wide', required: true %>
     <%= f.text_field :billing_org_nr, placeholder: t('order.billing_org_number'), class: 'input-wide', required: true %>
     <%= f.text_field :billing_address, placeholder: t('order.billing_address'), class: 'input-wide', required: true %>
@@ -73,14 +73,14 @@
 
   <div id="delivery_address_fields" class="float-left order-container">
     <h4><%= t('delivery_header') %>:</h4>
-    <%= f.text_field :delivery_name, placeholder: t('order.delivery_name'), class: 'input-wide' %>
-    <%= f.text_field :delivery_address, placeholder: t('order.delivery_address'), class: 'input-wide' %>
-    <%= f.text_field :delivery_postal_code, placeholder: t('order.delivery_postal_code'), class: 'input-small' %>
-    <%= f.text_field :delivery_city, placeholder: t('order.delivery_city'), class: 'input-medium' %>
-    <%= f.text_field :delivery_floor, placeholder: t('order.delivery_floor'), class: 'input-wide' %>
-    <%= f.text_field :delivery_door_code, placeholder: t('order.delivery_door_code'), class: 'input-wide' %>
-    <%= f.text_field :delivery_contact_name, placeholder: t('order.delivery_contact_name'), class: 'input-wide' %>
-    <%= f.text_field :delivery_contact_phone_number, placeholder: t('order.delivery_contact_phone'), class: 'input-wide' %>
+    <%= f.text_field :delivery_name, placeholder: t('order.delivery_name'), class: 'input-wide', required: true %>
+    <%= f.text_field :delivery_address, placeholder: t('order.delivery_address'), class: 'input-wide', required: true %>
+    <%= f.text_field :delivery_postal_code, placeholder: t('order.delivery_postal_code'), class: 'input-small', required: true %>
+    <%= f.text_field :delivery_city, placeholder: t('order.delivery_city'), class: 'input-medium', required: true %>
+    <%= f.text_field :delivery_floor, placeholder: t('order.delivery_floor'), class: 'input-wide', required: true %>
+    <%= f.text_field :delivery_door_code, placeholder: t('order.delivery_door_code'), class: 'input-wide', required: true %>
+    <%= f.text_field :delivery_contact_name, placeholder: t('order.delivery_contact_name'), class: 'input-wide', required: true %>
+    <%= f.text_field :delivery_contact_phone_number, placeholder: t('order.delivery_contact_phone'), class: 'input-wide', required: true %>
   </div>
 
   <div class="clear">&nbsp;</div>
@@ -117,6 +117,11 @@
         'order_delivery_contact_phone_number'
     ];
 
+    function delivery_required(status) {
+        delivery_information.forEach(function (obj) {
+            document.getElementById(obj).required = status;
+        })
+    }
 
     function setStorage(obj) {
         var element_value = document.getElementById(obj).value;
@@ -171,12 +176,14 @@
     var delivery_radio_button = document.getElementById('order_delivery_method_delivery');
     var pickup_radio_button = document.getElementById('order_delivery_method_pickup');
 
-    delivery_radio_button.onclick = function() {
+    delivery_radio_button.onclick = function () {
         document.getElementById('delivery_address_fields').hidden = false;
+        sessionStorage.setItem('radio_button', 'order_delivery_method_deliver');
+        delivery_required(true);
     };
-    pickup_radio_button.onclick = function() {
+    pickup_radio_button.onclick = function () {
         document.getElementById('delivery_address_fields').hidden = true;
+        sessionStorage.setItem('radio_button', 'order_delivery_method_pickup');
+        delivery_required(false);
     }
-
-
 </script>
