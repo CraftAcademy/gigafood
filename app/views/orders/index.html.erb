@@ -43,7 +43,7 @@
   <div class="float-left order-container">
     <h4><%= t('order.allergy_header') %></h4>
     <p><%= t('order.allergy_body') %></p>
-    <%= f.text_area :allergies, placeholder: 'Allergies', cols: 50, rows: 6, id: 'allergies' %>
+    <%= f.text_area :allergies, placeholder: 'Allergies', cols: 50, rows: 6%>
   </div>
 
   <div class="float-left order-container">
@@ -61,26 +61,26 @@
 
   <div class="float-left order-container">
     <h4><%= t('order.delivery_info_header') %>:</h4>
-    <%= f.text_field :billing_name, placeholder: t('order.billing_name'), class: 'input-wide', id: 'billing_name' %>
-    <%= f.text_field :billing_company, placeholder: t('order.billing_company'), class: 'input-wide', id: 'b_company', id: 'billing_company' %>
-    <%= f.text_field :billing_org_nr, placeholder: t('order.billing_org_number'), class: 'input-wide', id: 'billing_org_nr' %>
-    <%= f.text_field :billing_address, placeholder: t('order.billing_address'), class: 'input-wide', id: 'billing_address' %>
-    <%= f.text_field :billing_postal_code, id: t('order.billing_postal_code'), placeholder: 'Postal Code', class: 'input-small', id: 'billing_postal_code' %>
-    <%= f.text_field :billing_city, placeholder: t('order.billing_city'), class: 'input-medium', id: 'billing_city' %>
-    <%= f.text_field :billing_phone, placeholder: t('order.billing_contact_phone'), class: 'input-wide', id: 'billing_phone' %>
-    <%= f.text_field :billing_email, placeholder: t('order.billing_email'), class: 'input-wide', id: 'billing_email' %>
+    <%= f.text_field :billing_name, placeholder: t('order.billing_name'), class: 'input-wide',required: true %>
+    <%= f.text_field :billing_company, placeholder: t('order.billing_company'), class: 'input-wide', required: true %>
+    <%= f.text_field :billing_org_nr, placeholder: t('order.billing_org_number'), class: 'input-wide', required: true %>
+    <%= f.text_field :billing_address, placeholder: t('order.billing_address'), class: 'input-wide', required: true %>
+    <%= f.text_field :billing_postal_code, placeholder: t('order.billing_postal_code'), class: 'input-small', required: true %>
+    <%= f.text_field :billing_city, placeholder: t('order.billing_city'), class: 'input-medium', required: true %>
+    <%= f.text_field :billing_phone, placeholder: t('order.billing_contact_phone'), class: 'input-wide', required: true %>
+    <%= f.text_field :billing_email, placeholder: t('order.billing_email'), class: 'input-wide', required: true %>
   </div>
 
   <div id="delivery_address_fields" class="float-left order-container">
     <h4><%= t('delivery_header') %>:</h4>
-    <%= f.text_field :delivery_name, placeholder: t('order.delivery_name'), class: 'input-wide', id: 'delivery_name' %>
-    <%= f.text_field :delivery_address, placeholder: t('order.delivery_address'), class: 'input-wide', id: 'delivery_address' %>
-    <%= f.text_field :delivery_postal_code, id: t('order.delivery_postal_code'), placeholder: 'Postal Code', class: 'input-small', id: 'delivery_postal_code' %>
-    <%= f.text_field :delivery_city, placeholder: t('order.delivery_city'), class: 'input-medium', id: 'delivery_city' %>
-    <%= f.text_field :delivery_floor, placeholder: t('order.delivery_floor'), class: 'input-wide', id: 'delivery_floor' %>
-    <%= f.text_field :delivery_door_code, placeholder: t('order.delivery_door_code'), class: 'input-wide', id: 'delivery_door_code' %>
-    <%= f.text_field :delivery_contact_name, placeholder: t('order.delivery_contact_name'), class: 'input-wide', id: 'delivery_contact_name' %>
-    <%= f.text_field :delivery_contact_phone_number, placeholder: t('order.delivery_contact_phone'), class: 'input-wide', id: 'delivery_contact_phone_number' %>
+    <%= f.text_field :delivery_name, placeholder: t('order.delivery_name'), class: 'input-wide' %>
+    <%= f.text_field :delivery_address, placeholder: t('order.delivery_address'), class: 'input-wide' %>
+    <%= f.text_field :delivery_postal_code, placeholder: t('order.delivery_postal_code'), class: 'input-small' %>
+    <%= f.text_field :delivery_city, placeholder: t('order.delivery_city'), class: 'input-medium' %>
+    <%= f.text_field :delivery_floor, placeholder: t('order.delivery_floor'), class: 'input-wide' %>
+    <%= f.text_field :delivery_door_code, placeholder: t('order.delivery_door_code'), class: 'input-wide' %>
+    <%= f.text_field :delivery_contact_name, placeholder: t('order.delivery_contact_name'), class: 'input-wide' %>
+    <%= f.text_field :delivery_contact_phone_number, placeholder: t('order.delivery_contact_phone'), class: 'input-wide' %>
   </div>
 
   <div class="clear">&nbsp;</div>
@@ -94,24 +94,27 @@
 
 <script type="text/javascript">
 
-    var pickup_information = ['billing_name',
-        'billing_company',
-        'billing_org_nr',
-        'billing_address',
-        'billing_postal_code',
-        'billing_city',
-        'billing_phone',
-        'billing_email',
-        'allergies',
+    var pickup_information = [
+        'order_billing_name',
+        'order_billing_company',
+        'order_billing_org_nr',
+        'order_billing_address',
+        'order_billing_postal_code',
+        'order_billing_city',
+        'order_billing_phone',
+        'order_billing_email',
+        'order_allergies',
         'order_delivery_date'
     ];
-    var delivery_information = ['delivery_name',
-        'delivery_address',
-        'delivery_postal_code',
-        'delivery_city', 'delivery_floor',
-        'delivery_door_code',
-        'delivery_contact_name',
-        'delivery_contact_phone_number'
+    var delivery_information = [
+        'order_delivery_name',
+        'order_delivery_address',
+        'order_delivery_postal_code',
+        'order_delivery_city',
+        'order_delivery_floor',
+        'order_delivery_door_code',
+        'order_delivery_contact_name',
+        'order_delivery_contact_phone_number'
     ];
 
 
@@ -142,13 +145,16 @@
         }
     }
 
-    if (sessionStorage.getItem('billing_name') !== '') {
+    if (sessionStorage.getItem('order_billing_name') !== '') {
         loadData();
     }
 
     if (sessionStorage.getItem('radio_button') === 'order_delivery_method_delivery'
         || sessionStorage.getItem('radio_button') === 'order_delivery_method_pickup') {
         document.getElementById(sessionStorage.getItem('radio_button')).checked = true;
+        if (sessionStorage.getItem('radio_button') === 'order_delivery_method_pickup') {
+            document.getElementById('delivery_address_fields').hidden = true;
+        }
     } else {
         document.getElementById('order_delivery_method_delivery').checked = true;
         sessionStorage.setItem('radio_button', 'order_delivery_method_delivery');
@@ -161,5 +167,16 @@
     if (remove_cutlery) {
         remove_cutlery.onclick = saveData;
     }
+
+    var delivery_radio_button = document.getElementById('order_delivery_method_delivery');
+    var pickup_radio_button = document.getElementById('order_delivery_method_pickup');
+
+    delivery_radio_button.onclick = function() {
+        document.getElementById('delivery_address_fields').hidden = false;
+    };
+    pickup_radio_button.onclick = function() {
+        document.getElementById('delivery_address_fields').hidden = true;
+    }
+
 
 </script>
