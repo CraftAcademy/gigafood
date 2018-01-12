@@ -43,17 +43,17 @@
   <div class="float-left order-container">
     <h4><%= t('order.allergy_header') %></h4>
     <p><%= t('order.allergy_body') %></p>
-    <%= f.text_area :allergies, placeholder: 'Allergies', cols: 50, rows: 6 %>
+    <%= f.text_area :allergies, placeholder: 'Allergies', cols: 50, rows: 6, id: 'allergies' %>
   </div>
 
   <div class="float-left order-container">
     <h4><%= t('order.delivery_info_header') %>:</h4>
-    <%= f.datetime_field :delivery_date, placeholder: t('delivery_date'), class: 'input-wide' %>
+    <%= f.datetime_field :delivery_date, placeholder: t('delivery_date'), class: 'input-wide'%>
     <br>
     <%= f.radio_button(:delivery_method, 'pickup') %>
     <%= label_tag(:delivery_method_pickup, t('order.delivery_pickup').html_safe) %>
     <br>
-    <%= f.radio_button(:delivery_method, 'delivery', checked: true) %>
+    <%= f.radio_button(:delivery_method, 'delivery') %>
     <%= label_tag(:delivery_method_delivery, t('order.delivery_deliver').html_safe) %>
   </div>
 
@@ -94,58 +94,72 @@
 
 <script type="text/javascript">
 
-  var billing = ['billing_name',
-      'billing_company',
-      'billing_org_nr',
-      'billing_address',
-      'billing_postal_code',
-      'billing_city',
-      'billing_phone',
-      'billing_email'
-  ];
-  var delivery = [ 'delivery_name',
-      'delivery_address',
-      'delivery_postal_code',
-      'delivery_city','delivery_floor',
-      'delivery_door_code',
-      'delivery_contact_name',
-      'delivery_contact_phone_number'
-  ];
+    var pickup_information = ['billing_name',
+        'billing_company',
+        'billing_org_nr',
+        'billing_address',
+        'billing_postal_code',
+        'billing_city',
+        'billing_phone',
+        'billing_email',
+        'allergies',
+        'order_delivery_date'
+    ];
+    var delivery_information = ['delivery_name',
+        'delivery_address',
+        'delivery_postal_code',
+        'delivery_city', 'delivery_floor',
+        'delivery_door_code',
+        'delivery_contact_name',
+        'delivery_contact_phone_number'
+    ];
 
-  function saveData() {
-      billing.forEach(function(obj) {
-          var element_value = document.getElementById(obj).value;
-          localStorage.setItem(obj, element_value);
-      });
-      if (document.getElementById('delivery_address_fields')) {
-          delivery.forEach(function (obj) {
-              var element_value = document.getElementById(obj).value;
-              localStorage.setItem(obj, element_value);
-          })
-      }
-  }
 
-  function loadData() {
-      billing.forEach(function(obj) {
-          document.getElementById(obj).value = localStorage.getItem(obj)
-      });
-      if (document.getElementById('delivery_address_fields')) {
-          delivery.forEach(function(obj) {
-              document.getElementById(obj).value = localStorage.getItem(obj)
-          })
-      }
-  }
+    function setStorage(obj) {
+        var element_value = document.getElementById(obj).value;
+        sessionStorage.setItem(obj, element_value);
+    }
 
-  if (localStorage.getItem('billing_name') !== '') {
-      loadData();
-   }
+    function saveData() {
+        pickup_information.forEach(function (obj) {
+            setStorage(obj);
+        });
+        if (document.getElementById('delivery_address_fields')) {
+            delivery_information.forEach(function (obj) {
+                setStorage(obj);
+            })
+        }
+    }
 
-  var add_cutlery = document.getElementById('add_cutlery');
-  var remove_cutlery = document.getElementById('remove_cutlery');
+    function loadData() {
+        pickup_information.forEach(function (obj) {
+            document.getElementById(obj).value = sessionStorage.getItem(obj)
+        });
+        if (document.getElementById('delivery_address_fields')) {
+            delivery_information.forEach(function (obj) {
+                document.getElementById(obj).value = sessionStorage.getItem(obj)
+            })
+        }
+    }
 
-  add_cutlery.onclick = saveData;
-  if (remove_cutlery) {
-      remove_cutlery.onclick = saveData;
-  }
+    if (sessionStorage.getItem('billing_name') !== '') {
+        loadData();
+    }
+
+    if (sessionStorage.getItem('radio_button') === 'order_delivery_method_delivery'
+        || sessionStorage.getItem('radio_button') === 'order_delivery_method_pickup') {
+        document.getElementById(sessionStorage.getItem('radio_button')).checked = true;
+    } else {
+        document.getElementById('order_delivery_method_delivery').checked = true;
+        sessionStorage.setItem('radio_button', 'order_delivery_method_delivery');
+    }
+
+    var add_cutlery = document.getElementById('add_cutlery');
+    var remove_cutlery = document.getElementById('remove_cutlery');
+
+    add_cutlery.onclick = saveData;
+    if (remove_cutlery) {
+        remove_cutlery.onclick = saveData;
+    }
 
 </script>
