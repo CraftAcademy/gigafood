@@ -33,7 +33,9 @@
   <%= f.number_field :cutlery_quantity %>
   <%= f.hidden_field :status, placeholder: 'Status', value: 'submitted' %>
   <% if @order.shopping_cart_items.find_by(item_id: Dish.find_by(name: "Cutlery").id) %>
-    <%= f.submit 'Remove Cutlery', class: 'button float-right', id: 'remove_cutlery' %>
+    <% if @order.shopping_cart_items.find_by(item_id: Dish.find_by(name: "Cutlery").id) %>
+      <%= f.submit 'Remove Cutlery', class: 'button float-right', id: 'remove_cutlery' %>
+    <% end %>
   <% end %>
   <%= f.submit 'Add Cutlery', class: 'button float-right', id: 'add_cutlery' %>
 <% end %>
@@ -68,7 +70,7 @@
     <%= f.text_field :billing_postal_code, placeholder: t('order.billing_postal_code'), class: 'input-small', required: true %>
     <%= f.text_field :billing_city, placeholder: t('order.billing_city'), class: 'input-medium', required: true %>
     <%= f.text_field :billing_phone, placeholder: t('order.billing_contact_phone'), class: 'input-wide', required: true %>
-    <%= f.text_field :billing_email, placeholder: t('order.billing_email'), class: 'input-wide', required: true %>
+    <%= f.text_field :billing_email, placeholder: t('order.billing_email'), type: :email, class: 'input-wide', required: true %>
   </div>
 
   <div id="delivery_address_fields" class="float-left order-container">

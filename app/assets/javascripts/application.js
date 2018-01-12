@@ -12,19 +12,4 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require_tree .
-
-// $(document).ready(function() {
-//     $('input[type=radio][id=order_delivery_method_delivery]').change(function() {
-//         var fields = $('#delivery_address_fields');
-//         sessionStorage.setItem('radio_button', 'order_delivery_method_deliver');
-//         fields.show();
-//     });
-//
-//     $('input[type=radio][id=order_delivery_method_pickup]').change(function() {
-//         var fields = $('#delivery_address_fields');
-//         sessionStorage.setItem('radio_button', 'order_delivery_method_pickup');
-//         fields.hide();
-//     });
-//
-// });
+// = require_tree .
