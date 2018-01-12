@@ -33,9 +33,9 @@
   <%= f.number_field :cutlery_quantity %>
   <%= f.hidden_field :status, placeholder: 'Status', value: 'submitted' %>
   <% if @order.shopping_cart_items.find_by(item_id: Dish.find_by(name: "Cutlery").id) %>
-    <%= f.submit 'Remove Cutlery', class: 'button float-right' %>
+    <%= f.submit 'Remove Cutlery', class: 'button float-right', id: 'remove_cutlery' %>
   <% end %>
-  <%= f.submit 'Add Cutlery', class: 'button float-right' %>
+  <%= f.submit 'Add Cutlery', class: 'button float-right', id: 'add_cutlery' %>
 <% end %>
 
 
@@ -61,26 +61,26 @@
 
   <div class="float-left order-container">
     <h4><%= t('order.delivery_info_header') %>:</h4>
-    <%= f.text_field :billing_name, placeholder: t('order.billing_name'), class: 'input-wide', required: true %>
-    <%= f.text_field :billing_company, placeholder: t('order.billing_company'), class: 'input-wide' %>
-    <%= f.text_field :billing_org_nr, placeholder: t('order.billing_org_number'), class: 'input-wide' %>
-    <%= f.text_field :billing_address, placeholder: t('order.billing_address'), class: 'input-wide' %>
-    <%= f.text_field :billing_postal_code, id: t('order.billing_postal_code'), placeholder: 'Postal Code', class: 'input-small' %>
-    <%= f.text_field :billing_city, placeholder: t('order.billing_city'), class: 'input-medium' %>
-    <%= f.text_field :billing_phone, placeholder: t('order.billing_contact_phone'), class: 'input-wide' %>
-    <%= f.text_field :billing_email, placeholder: t('order.billing_email'), class: 'input-wide' %>
+    <%= f.text_field :billing_name, placeholder: t('order.billing_name'), class: 'input-wide', id: 'billing_name' %>
+    <%= f.text_field :billing_company, placeholder: t('order.billing_company'), class: 'input-wide', id: 'b_company', id: 'billing_company' %>
+    <%= f.text_field :billing_org_nr, placeholder: t('order.billing_org_number'), class: 'input-wide', id: 'billing_org_nr' %>
+    <%= f.text_field :billing_address, placeholder: t('order.billing_address'), class: 'input-wide', id: 'billing_address' %>
+    <%= f.text_field :billing_postal_code, id: t('order.billing_postal_code'), placeholder: 'Postal Code', class: 'input-small', id: 'billing_postal_code' %>
+    <%= f.text_field :billing_city, placeholder: t('order.billing_city'), class: 'input-medium', id: 'billing_city' %>
+    <%= f.text_field :billing_phone, placeholder: t('order.billing_contact_phone'), class: 'input-wide', id: 'billing_phone' %>
+    <%= f.text_field :billing_email, placeholder: t('order.billing_email'), class: 'input-wide', id: 'billing_email' %>
   </div>
 
   <div id="delivery_address_fields" class="float-left order-container">
     <h4><%= t('delivery_header') %>:</h4>
-    <%= f.text_field :delivery_name, placeholder: t('order.delivery_name'), class: 'input-wide' %>
-    <%= f.text_field :delivery_address, placeholder: t('order.delivery_address'), class: 'input-wide' %>
-    <%= f.text_field :delivery_postal_code, id: t('order.delivery_postal_code'), placeholder: 'Postal Code', class: 'input-small' %>
-    <%= f.text_field :delivery_city, placeholder: t('order.delivery_city'), class: 'input-medium' %>
-    <%= f.text_field :delivery_floor, placeholder: t('order.delivery_floor'), class: 'input-wide' %>
-    <%= f.text_field :delivery_door_code, placeholder: t('order.delivery_door_code'), class: 'input-wide' %>
-    <%= f.text_field :delivery_contact_name, placeholder: t('order.delivery_contact_name'), class: 'input-wide' %>
-    <%= f.text_field :delivery_contact_phone_number, placeholder: t('order.delivery_contact_phone'), class: 'input-wide' %>
+    <%= f.text_field :delivery_name, placeholder: t('order.delivery_name'), class: 'input-wide', id: 'delivery_name' %>
+    <%= f.text_field :delivery_address, placeholder: t('order.delivery_address'), class: 'input-wide', id: 'delivery_address' %>
+    <%= f.text_field :delivery_postal_code, id: t('order.delivery_postal_code'), placeholder: 'Postal Code', class: 'input-small', id: 'delivery_postal_code' %>
+    <%= f.text_field :delivery_city, placeholder: t('order.delivery_city'), class: 'input-medium', id: 'delivery_city' %>
+    <%= f.text_field :delivery_floor, placeholder: t('order.delivery_floor'), class: 'input-wide', id: 'delivery_floor' %>
+    <%= f.text_field :delivery_door_code, placeholder: t('order.delivery_door_code'), class: 'input-wide', id: 'delivery_door_code' %>
+    <%= f.text_field :delivery_contact_name, placeholder: t('order.delivery_contact_name'), class: 'input-wide', id: 'delivery_contact_name' %>
+    <%= f.text_field :delivery_contact_phone_number, placeholder: t('order.delivery_contact_phone'), class: 'input-wide', id: 'delivery_contact_phone_number' %>
   </div>
 
   <div class="clear">&nbsp;</div>
@@ -91,3 +91,37 @@
   </div>
 
 <% end %>
+
+<script type="text/javascript">
+
+  billing_name
+    billing_company
+   billing_org_nr
+    billing_address
+    billing_postal_code
+    billing_city
+    billing_phone
+  billing_email
+
+  function saveData() {
+      var b_name = document.getElementById('billing_name').value;
+      localStorage.setItem('billing_name', b_name);
+  }
+
+  function loadData() {
+      document.getElementById('billing_name').value = localStorage.getItem('billing_name')
+  }
+
+  if (localStorage.getItem('billing_name') !== '') {
+      loadData();
+   }
+
+  var add_cutlery = document.getElementById('add_cutlery');
+  var remove_cutlery = document.getElementById('remove_cutlery');
+
+  add_cutlery.onclick = saveData;
+  if (remove_cutlery) {
+      remove_cutlery.onclick = saveData;
+  }
+
+</script>
