@@ -32,7 +32,7 @@
   <%= label_tag(:cutlery_quantity, 'Do you need cutlery?') %>
   <%= f.number_field :cutlery_quantity %>
   <%= f.hidden_field :status, placeholder: 'Status', value: 'submitted' %>
-  <% if @order.shopping_cart_items.find_by(item_id: Dish.find_by(name: "Cutlery").id) %>
+  <% if Dish.find_by(name: "Cutlery") %>
     <% if @order.shopping_cart_items.find_by(item_id: Dish.find_by(name: "Cutlery").id) %>
       <%= f.submit 'Remove Cutlery', class: 'button float-right', id: 'remove_cutlery' %>
     <% end %>
