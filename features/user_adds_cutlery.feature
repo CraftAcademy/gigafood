@@ -11,14 +11,18 @@ Feature: User wants cutlery
       | Dessert | Description for category 3 |
 
     And the following dishes exist:
-      | name   | description            | price | min_quantity |
-      | Dish 1 | Description for Dish 1 | 100   | 10           |
-      | Dish 2 | Description for Dish 2 | 200   | 10           |
-      | Dish 3 | Description for Dish 3 | 300   | 10           |
-
-  Scenario: User adds cutlery
-    Given I go to the landing page
+      | name    | description            | price | min_quantity |
+      | Dish 1  | Description for Dish 1 | 100   | 10           |
+      | Dish 2  | Description for Dish 2 | 200   | 10           |
+      | Dish 3  | Description for Dish 3 | 300   | 10           |
+      | Cutlery | Knife, fork and spoon  | 2     | 1            |
+    Then I go to the landing page
     And I click on + for "Dish 1"
     Then I click on "Next"
-    And I select "cutlery" and fill in quantity with "5"
-    And I fill in all relevant fields and submit the order
+
+  Scenario: User adds/removes cutlery
+    Given I select "cutlery" and fill in quantity with "5"
+    When I press "Add Cutlery"
+    Then I should see "Cutlery Added"
+    When I press "Remove Cutlery"
+    Then I should see "Cutlery Removed"

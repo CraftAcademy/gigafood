@@ -29,10 +29,12 @@ class OrdersController < ApplicationController
       quantity = params[:order][:cutlery_quantity].to_i
       cutlery = Dish.find_by(name: 'Cutlery')
       @order.add(cutlery, 2, quantity)
+      flash[:success] = 'Cutlery Added'
       redirect_to orders_path
     elsif params[:commit] == 'Remove Cutlery'
       cutlery = Dish.find_by(name: 'Cutlery')
-      @order.remove(cutlery, @order.shopping_cart_items.last.quantity) # needs refactoring to make sure we have cutlery selected
+      @order.remove(cutlery, @order.shopping_cart_items.last.quantity) # TODO needs refactoring to make sure we have cutlery selected
+      flash[:success] = 'Cutlery Removed'
       redirect_to orders_path
     else
       if @order.update(order_params)

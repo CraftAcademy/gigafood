@@ -54,9 +54,7 @@ Given(/^"([^"]*)"'s order contains no items$/) do |billing_name|
 end
 
 Then(/^I select "([^"]*)" and fill in quantity with "([^"]*)"$/) do |option, quantity|
-  # select div that contains cutlery radio button
-  # select cutlery option
-  # fill in quantity
+  fill_in "order_#{option}_quantity", with: quantity
 end
 
 And(/^I fill in all relevant fields and submit the order$/) do
