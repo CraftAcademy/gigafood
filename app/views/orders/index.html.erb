@@ -30,7 +30,7 @@
 <hr>
 <%= form_for @order do |f| %>
   <%= label_tag(:cutlery_quantity, 'Do you need cutlery?') %>
-  <%= f.number_field :cutlery_quantity %>
+  <%= number_field_tag :cutlery_quantity %>
   <%= f.hidden_field :status, placeholder: 'Status', value: 'submitted' %>
   <% if Dish.find_by(name: "Cutlery") %>
     <% if @order.shopping_cart_items.find_by(item_id: Dish.find_by(name: "Cutlery").id) %>

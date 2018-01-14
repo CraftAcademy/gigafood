@@ -54,7 +54,7 @@ Given(/^"([^"]*)"'s order contains no items$/) do |billing_name|
 end
 
 Then(/^I select "([^"]*)" and fill in quantity with "([^"]*)"$/) do |option, quantity|
-  fill_in "order_#{option}_quantity", with: quantity
+  fill_in "#{option}_quantity", with: quantity
 end
 
 And(/^I fill in all relevant fields and submit the order$/) do

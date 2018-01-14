@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
   def update
     @order = get_order
     if params[:commit] == 'Add Cutlery'
-      quantity = params[:order][:cutlery_quantity].to_i
+      quantity = params[:cutlery_quantity].to_i
       cutlery = Dish.find_by(name: 'Cutlery')
       @order.add(cutlery, 2, quantity)
       flash[:success] = 'Cutlery Added'
