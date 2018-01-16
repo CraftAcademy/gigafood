@@ -6,8 +6,9 @@ Feature: Admin adds custom translations
   Background:
 
     Given the following dishes exist:
-      | name   | description            | price | min_quantity |
-      | Dish 1 | Description for Dish 1 | 100   | 10           |
+      | name    | description            | price | min_quantity |
+      | Dish 1  | Description for Dish 1 | 100   | 10           |
+      | Cutlery | Knife, fork and spoon  | 2     | 1            |
 
     And there are no custom translations
 

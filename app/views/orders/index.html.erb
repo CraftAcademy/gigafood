@@ -34,12 +34,12 @@
   <%= f.hidden_field :status, placeholder: 'Status', value: 'submitted' %>
   <% if Dish.find_by(name: "Cutlery") %>
     <% if @order.shopping_cart_items.find_by(item_id: Dish.find_by(name: "Cutlery").id) %>
-      <%= f.submit 'Remove Cutlery', class: 'button float-right', id: 'remove_cutlery' %>
+      <%= f.submit t('order.submit_remove_cutlery_order_button'), class: 'button float-right', id: 'remove_cutlery' %>
     <% end %>
   <% end %>
-  <%= f.submit 'Add Cutlery', class: 'button float-right', id: 'add_cutlery' %>
+  <%= f.submit t('order.submit_add_cutlery_order_button'), class: 'button float-right', id: 'add_cutlery' %>
 <% end %>
-
+<%= @cutlery.description %>
 
 <%= form_for @order do |f| %>
   <div class="float-left order-container">
@@ -50,7 +50,7 @@
 
   <div class="float-left order-container">
     <h4><%= t('order.delivery_info_header') %>:</h4>
-    <%= f.datetime_field :delivery_date, placeholder: t('delivery_date'), class: 'input-wide' %>
+    <%= f.datetime_field :delivery_date, placeholder: t('delivery_date'), class: 'input-wide', required: true %>
     <br>
     <%= f.radio_button(:delivery_method, 'pickup') %>
     <%= label_tag(:delivery_method_pickup, t('order.delivery_pickup').html_safe) %>
@@ -89,7 +89,7 @@
 
   <div class="float-right order-container">
     <%= f.hidden_field :status, placeholder: 'Status', value: 'submitted' %>
-    <%= f.submit t('order.submit_order_button'), class: 'button float-right' %>
+    <%= f.submit t('order.submit_order_button'), class: 'button float-right', id: 'submit_order' %>
   </div>
 
 <% end %>
@@ -152,24 +152,28 @@
         }
     }
 
-    if (sessionStorage.getItem('order_billing_name') !== '') {
+    if (sessionStorage.getItem('order_billing_name') !== null) {
         loadData();
     }
 
     if (sessionStorage.getItem('radio_button') === 'order_delivery_method_delivery'
         || sessionStorage.getItem('radio_button') === 'order_delivery_method_pickup') {
         document.getElementById(sessionStorage.getItem('radio_button')).checked = true;
+        delivery_required(false);
         if (sessionStorage.getItem('radio_button') === 'order_delivery_method_pickup') {
             document.getElementById('delivery_address_fields').hidden = true;
         }
     } else {
         document.getElementById('order_delivery_method_delivery').checked = true;
         sessionStorage.setItem('radio_button', 'order_delivery_method_delivery');
+        delivery_required(true);
     }
 
     var add_cutlery = document.getElementById('add_cutlery');
+    var submit_order = document.getElementById('submit_order');
     var remove_cutlery = document.getElementById('remove_cutlery');
 
+    submit_order.onclick = saveData;
     add_cutlery.onclick = saveData;
     if (remove_cutlery) {
         remove_cutlery.onclick = saveData;

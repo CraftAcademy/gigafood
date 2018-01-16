@@ -3,11 +3,13 @@ class OrdersController < ApplicationController
 
   def index
     @order = get_order
+    @cutlery = Dish.find_by(name: "Cutlery")
   end
 
   def create
     @order = get_order
     @order.clear
+    @cutlery = Dish.find_by(name: "Cutlery")
 
     params[:dishes].each do |dish_key, dish_value|
       dish_id = dish_key[5, dish_key.length].to_i
@@ -25,15 +27,14 @@ class OrdersController < ApplicationController
 
   def update
     @order = get_order
+    @cutlery = Dish.find_by(name: 'Cutlery')
     if params[:commit] == 'Add Cutlery'
       quantity = params[:cutlery_quantity].to_i
-      cutlery = Dish.find_by(name: 'Cutlery')
-      @order.add(cutlery, 2, quantity)
+      @order.add(@cutlery, 2, quantity)
       flash[:success] = 'Cutlery Added'
       redirect_to orders_path
     elsif params[:commit] == 'Remove Cutlery'
-      cutlery = Dish.find_by(name: 'Cutlery')
-      @order.remove(cutlery, @order.shopping_cart_items.last.quantity) # TODO needs refactoring to make sure we have cutlery selected
+      @order.remove(@cutlery, @order.shopping_cart_items.last.quantity) # TODO needs refactoring to make sure we have cutlery selected
       flash[:success] = 'Cutlery Removed'
       redirect_to orders_path
     else
