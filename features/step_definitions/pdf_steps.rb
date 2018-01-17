@@ -18,8 +18,8 @@ Given(/^an Invoice has been generated for "([^"]*)"'s order$/) do |billing_email
   steps %Q{
       Given "#{billing_email}"'s order contains:
         | dish_name | quantity |
-        | Product 1    | 10       |
-        | Product 2    | 20       |
+        | Dish 1    | 10       |
+        | Dish 2    | 20       |
       And I click on "Orders"
       And I press "View" for order "Bob Schmob"
       And I press "Confirm Order"

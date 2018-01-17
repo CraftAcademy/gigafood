@@ -3,16 +3,16 @@ Given(/^the following dishes exist:$/) do |table|
     if dish[:category]
       category = Category.find_by(name: dish[:category])
       hash = dish.except!(dish[:category]).merge(category: category)
-      FactoryGirl.create(:dish, hash)
+      FactoryGirl.create(:product, hash)
     else
-      FactoryGirl.create(:dish, dish)
+      FactoryGirl.create(:product, dish)
     end
   end
 end
 
 When(/^I press "([^"]*)" for dish "([^"]*)"$/) do |link, dish_name|
   dish = Product.find_by(name: dish_name)
-  within("#dish_#{dish.id}") do
+  within("#product_#{dish.id}") do
     click_link_or_button link
   end
 end
