@@ -18,14 +18,14 @@ RSpec.describe Product, type: :model do
   describe 'scopes' do
     before do
       5.times {create(:product, of_type: 'dish')}
-      create(:product, of_type: 'cutlery')
+      create(:product, of_type: 'miscellaneous')
     end
 
     it "should have a dishes named scope that returns dishes" do
       expect(Product.dishes.count).to be(5)
     end
 
-    it "should have a cutlery named scope that returns cutlery" do
+    it "should have a cutlery named scope that returns miscellaneous" do
       expect(Product.cutlery.count).to be(1)
     end
   end

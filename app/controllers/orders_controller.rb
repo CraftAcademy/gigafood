@@ -3,13 +3,13 @@ class OrdersController < ApplicationController
 
   def index
     @order = get_order
-    @cutlery = Product.find_by(name: "Cutlery")
+    @cutlery = Product.cutlery.first
   end
 
   def create
     @order = get_order
     @order.clear
-    @cutlery = Product.find_by(name: "Cutlery")
+    @cutlery = Product.cutlery.first
 
     params[:dishes].each do |dish_key, dish_value|
       dish_id = dish_key[5, dish_key.length].to_i
@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
 
   def update
     @order = get_order
-    @cutlery = Product.find_by(name: 'Cutlery')
+    @cutlery = Product.cutlery.first
     if params[:commit] == 'Add Cutlery'
       quantity = params[:cutlery_quantity].to_i
       @order.add(@cutlery, 2, quantity)
