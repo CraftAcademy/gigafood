@@ -35,6 +35,7 @@ class OrdersController < ApplicationController
   end
 
   def confirm
+    binding.pry
     @order = Order.find(params[:id])
     session[:order_id] = nil
   end
