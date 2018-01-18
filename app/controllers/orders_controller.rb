@@ -1,15 +1,13 @@
 class OrdersController < ApplicationController
   include ApplicationHelper
 
+  before_action :setup_variables, only: [:index, :create, :update]
+
   def index
-    @order = get_order
-    @cutlery = Product.cutlery.first
   end
 
   def create
-    @order = get_order
     @order.clear
-    @cutlery = Product.cutlery.first
 
     params[:dishes].each do |dish_key, dish_value|
       dish_id = dish_key[5, dish_key.length].to_i
@@ -26,15 +24,13 @@ class OrdersController < ApplicationController
   end
 
   def update
-    @order = get_order
-    @cutlery = Product.cutlery.first
     if params[:commit] == 'Add Cutlery'
       quantity = params[:cutlery_quantity].to_i
       @order.add(@cutlery, 2, quantity)
       flash[:success] = 'Cutlery Added'
       redirect_to orders_path
     elsif params[:commit] == 'Remove Cutlery'
-      @order.remove(@cutlery, @order.shopping_cart_items.last.quantity) # TODO needs refactoring to make sure we have cutlery selected
+      @order.remove(@cutlery, @order.shopping_cart_items.last.quantity) # TODO refactor
       flash[:success] = 'Cutlery Removed'
       redirect_to orders_path
     else
@@ -77,11 +73,15 @@ class OrdersController < ApplicationController
 
   private
 
+  def setup_variables
+    @order = get_order
+    @cutlery = Product.cutlery.first
+  end
+
   def order_params
     params.require(:order).permit(:delivery_date, :delivery_method, :delivery_name, :delivery_address, :delivery_postal_code, :delivery_city,
                                   :delivery_floor, :delivery_door_code, :delivery_contact_name, :delivery_contact_phone_number, :billing_name,
                                   :billing_company, :billing_org_nr, :billing_address, :billing_postal_code, :billing_city, :billing_phone,
                                   :billing_email, :allergies, :boxes, :status)
   end
-
 end
