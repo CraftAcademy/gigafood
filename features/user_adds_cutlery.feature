@@ -11,11 +11,11 @@ Feature: User wants cutlery
       | Dessert | Description for category 3 |
 
     And the following dishes exist:
-      | name    | description            | price | min_quantity | of_type   |
-      | Dish 1  | Description for Dish 1 | 100   | 10           | 'dish'    |
-      | Dish 2  | Description for Dish 2 | 200   | 10           | 'dish'    |
-      | Dish 3  | Description for Dish 3 | 300   | 10           | 'dish'    |
-      | Cutlery | Knife, fork and spoon  | 2     | 1            | 'cutlery' |
+      | name    | description            | price | min_quantity | of_type |
+      | Dish 1  | Description for Dish 1 | 100   | 10           | dish    |
+      | Dish 2  | Description for Dish 2 | 200   | 10           | dish    |
+      | Dish 3  | Description for Dish 3 | 300   | 10           | dish    |
+      | Cutlery | Knife, fork and spoon  | 2     | 1            | cutlery |
     Then I go to the landing page
     And I click on + for "Dish 1"
     Then I click on "Next"
