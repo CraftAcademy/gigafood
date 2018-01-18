@@ -27,6 +27,7 @@ class OrdersController < ApplicationController
     @order = get_order
 
     if @order.update(order_params)
+      ConfirmationMailer.review_email(@order)
       redirect_to confirm_order_path
     else
       flash[:alert] = 'Error when saving order!'
@@ -35,7 +36,6 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-    binding.pry
     @order = Order.find(params[:id])
     session[:order_id] = nil
   end
