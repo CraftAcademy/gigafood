@@ -80,7 +80,6 @@ ActiveAdmin.register Order do
     column :billing_name
     column :allergies
     column :boxes
-    column :status
     actions
   end
 
@@ -124,6 +123,7 @@ ActiveAdmin.register Order do
       row :billing_email
       row :allergies
       row :boxes
+      row :status
     end
   end
 
