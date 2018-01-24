@@ -35,8 +35,7 @@ class OrdersController < ApplicationController
       redirect_to orders_path
     else
       if @order.update(order_params)
-        binding.pry
-        ConfirmationMailer.review_email(@order)
+        ConfirmationMailer.review_email(@order).deliver_now
         redirect_to confirm_order_path
       else
         flash[:alert] = 'Error when saving order!'

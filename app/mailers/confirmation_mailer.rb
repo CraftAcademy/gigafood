@@ -2,7 +2,6 @@ class ConfirmationMailer < ApplicationMailer
   default from: 'noreply@gigafood.se'
 
   def review_email(order)
-    binding.pry
     @order = order
     mail(to: @order.billing_email, subject: 'Gigafood Order')
   end
