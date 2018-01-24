@@ -10,8 +10,7 @@
 <%= I18n.t('gigafood.email') %>
 <%= I18n.t('gigafood.phone_number') %>
 
-<%= I18n.t('email.order_header') %>
-<%= I18n.t('email.order_text') %>
+<%= I18n.t('email.order_header') + ":" %>
 
 <% @order.shopping_cart_items.each do |order_item| %>
   <%= I18n.t('lable.dish') + ": " + order_item.item.name %>
