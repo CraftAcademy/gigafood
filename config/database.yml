@@ -81,7 +81,7 @@ test: &test
 production:
   <<: *default
   database: gigafood_production
-  username: gigafood
+  username: deploy
   password: <%= ENV['GIGAFOOD_DATABASE_PASSWORD'] %>
 
 cucumber:
