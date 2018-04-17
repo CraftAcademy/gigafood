@@ -53,6 +53,12 @@ group :test do
 end
 
 group :development do
+  gem 'capistrano', '~> 3.8', '>= 3.8.2'
+  gem 'capistrano-bundler', '~> 1.2'
+  gem 'capistrano-rails', '~> 1.3'
+  gem 'capistrano-env-config'
+  gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.1'
+  gem 'capistrano3-puma', '~> 3.1', '>= 3.1.1'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
