@@ -58,6 +58,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.3'
   gem 'capistrano-env-config'
   gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.1'
+  gem 'capistrano-passenger'
   gem 'capistrano3-puma', '~> 3.1', '>= 3.1.1'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'

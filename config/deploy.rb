@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.10.2"
+lock '~> 3.10.2'
 
 # config/deploy.rb
 set :rbenv_type, :user # or :system, depends on your rbenv setup
@@ -13,15 +13,15 @@ set :branch, ENV['BRANCH']
 set :deploy_to, ENV['APP_PATH']
 
 # Default value for :linked_files is []
-set :linked_files, %w{
+set :linked_files, %w[
   config/database.yml config/secrets.yml .env config/puma.rb
-}
+]
 
 # Default value for linked_dirs is []
-set :linked_dirs, %w{
+set :linked_dirs, %w[
   log tmp/pids tmp/cache tmp/sockets vendor/bundle
   public/system public/uploads public/.well-known
-}
+]
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
