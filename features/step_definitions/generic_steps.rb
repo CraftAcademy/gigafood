@@ -14,6 +14,9 @@ end
 Then(/^show me the page$/) do
   save_and_open_page
 end
+Given("skip this scenario") do
+  skip_this_scenario
+end
 
 When(/^I confirm popup$/) do
   page.driver.browser.switch_to.alert.accept
@@ -31,7 +34,7 @@ end
 
 Then /^"([^"]*)" should see "(.*)" in the email$/ do |address, text|
   open_email(address)
-  expect(current_email.body).to match Regexp.new(text)
+  expect(current_email.html).to match Regexp.new(text)
 end
 
 When(/^I click on "([^"]*)"$/) do |link_or_button|

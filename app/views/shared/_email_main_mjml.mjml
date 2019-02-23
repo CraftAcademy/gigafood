@@ -1,0 +1,151 @@
+<mj-section>
+  <mj-column>
+    <mj-table>
+      <tr style="text-align:left;padding:15px 0;">
+        <th><%= I18n.t('email.order_header') %></th>
+        <th align="right"><%= I18n.t('email.column_quantity') %></th>
+        <th align="right"><%= I18n.t('email.column_price') %></th>
+      </tr>
+      <% @order.shopping_cart_items.each do |order_item| %>
+        <tr>
+          <td style="font-weight:bold;" class="query"><%= order_item.item.name %></td>
+          <td align="right"><%= order_item.quantity.to_s %></td>
+          <td align="right"><%= humanized_money(order_item.quantity * order_item.price) %> SEK</td>
+        </tr>
+        <mj-spacer height="5px" />
+        <tr>
+          <td class="query"><%= order_item.item.description %></td>
+        </tr>
+        <mj-spacer height="5px" />
+      <% end %>
+    </mj-table>
+    <mj-table>
+      <tr>
+        <td><%= I18n.t('order.delivery_cost') %></td>
+        <td></td>
+        <td align="right"></td>
+      </tr>
+      <tr>
+        <td><%= I18n.t('order.subtotal') %></td>
+        <td></td>
+        <td align="right"><%= humanized_money(@order.subtotal) %> SEK</td>
+      </tr>
+      <tr>
+        <td><%= I18n.t('order.tax') %></td>
+        <td></td>
+        <td align="right"><%= humanized_money(@order.taxes) %> SEK</td>
+      </tr>
+      <tr>
+        <td><%= I18n.t('order.total') %></td>
+        <td></td>
+        <td align="right"><%= humanized_money(@order.total) %> SEK</td>
+      </tr>
+    </mj-table>
+    <% if @order.allergies != "" %>
+      <mj-text align="left">
+        <%= I18n.t('email.allergies_header') %>
+      </mj-text>
+      <mj-text align="left">
+        <%= I18n.t('email.allergies_text') %>
+      </mj-text>
+      <mj-text><%= @order.allergies %><mj-text>
+    <% end %>
+    <mj-text></mj-text>
+    <% if @order.delivery_method == 'pickup' %>
+      <mj-text style="font-weight:bold;" align="left"><%= I18n.t('email.delivery_text_pickup') %></mj-text>
+    <% else %>
+      <mj-text style="font-weight:bold;" align="left"><%= I18n.t('email.delivery_text_delivery') %></mj-text>
+      <mj-table>
+        <tr>
+          <td align="left"><%= I18n.t('email.column_delivery_date') %></td>
+          <td></td>
+          <td align="right"><%= @order.delivery_date.strftime("%Y/%m/%d") %></td>
+        </tr>
+        <tr>
+          <td align="left"><%= I18n.t('email.column_delivery_time') %></td>
+          <td></td>
+          <td align="right"> <%=@order.delivery_date.strftime("%H:%M") %></td>
+        </tr>
+        <tr>
+          <td align="left"><%= I18n.t('email.column_delivery_name') %></td>
+          <td></td>
+          <td align="right"><%= @order.delivery_name %></td>
+        </tr>
+        <tr>
+          <td align="left"><%= I18n.t('email.column_delivery_address') %></td>
+          <td></td>
+          <td align="right"><%= @order.delivery_address %></td>
+        </tr>
+        <tr>
+          <td align="left"><%= I18n.t('email.column_delivery_postal_code') %></td>
+          <td></td>
+          <td align="right"><%= @order.delivery_postal_code %></td>
+        </tr>
+        <tr>
+          <td align="left"><%= I18n.t('email.column_delivery_floor') %></td>
+          <td></td>
+          <td align="right"><%= @order.delivery_floor %></td>
+        </tr>
+        <tr>
+          <td align="left"><%= I18n.t('email.column_delivery_door_code') %></td>
+          <td></td>
+          <td align="right"><%= @order.delivery_door_code %></td>
+        </tr>
+        <tr>
+          <td align="left"><%= I18n.t('email.column_delivery_contact_name') %>/td>
+          <td></td>
+          <td align="right"><%= @order.delivery_contact_name %></td>
+        </tr>
+        <tr>
+          <td align="left"><%= I18n.t('email.column_delivery_contact_name_and_phone') %></td>
+          <td></td>
+          <td align="right"><%= @order.delivery_contact_phone_number %></td>
+        </tr>
+      </mj-table>
+    <% end %>
+    <mj-text style="font-weight:bold;"><%= I18n.t('email.payment_header') %></mj-text>
+    <% if @url == 'http://example.com/confirmation' %>
+        <mj-text><%= I18n.t('email.payment_text') %></mj-text>
+    <% end %>
+    <mj-table>
+      <tr>
+        <td align="left"><%= I18n.t('email.billing_name') %></td>
+        <td></td>
+        <td align="right"><%= @order.billing_name %></td>
+      </tr>
+      <tr>
+        <td align="left"><%= I18n.t('email.billing_company') %></td>
+        <td></td>
+        <td align="right"><%= @order.billing_company %></td>
+      </tr>
+      <tr>
+        <td align="left"><%= I18n.t('email.billing_organization_number') %></td>
+        <td></td>
+        <td align="right"><%= @order.billing_org_nr %></td>
+      </tr>
+      <tr>
+        <td align="left"><%= I18n.t('email.billing_address') %></td>
+        <td ></td>
+        <td align="right"><%= @order.billing_address %></td>
+      </tr>
+      <tr>
+        <td align="left"><%= I18n.t('email.billing_postal_code') %></td>
+        <td></td>
+        <td align="right"><%= @order.billing_postal_code %></td>
+      </tr>
+      <tr>
+        <td align="left"><%= I18n.t('email.billing_phone_') %></td>
+        <td></td>
+        <td align="right"><%= @order.billing_phone %></td>
+      </tr>
+      <tr>
+        <td align="left"><%= I18n.t('email.billing_email') %></td>
+        <td></td>
+        <td align="right"><%= @order.billing_email %></td>
+      </tr>
+    </mj-table>
+    <% if @url == 'http://example.com/confirmation' %>
+      <mj-text><%= I18n.t('email.acceptance_header') %></mj-text>
+    <% end %>
+  </mj-column>
+</mj-section>

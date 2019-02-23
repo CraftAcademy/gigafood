@@ -1,0 +1,20 @@
+<mjml>
+  <mj-body>
+    <mj-container>
+      <mj-section>
+        <mj-column>
+          <mj-image src="http://gigafood2.herokuapp.com/gigafood_logo.png" width="300%" height="auto" />
+          <mj-text font-size="14"><%= I18n.t('email.cancel_main_header') %></mj-text>
+          <mj-text font-sice="14"><%= I18n.t('email.cancel_main_text', order_id: @order.id) %></mj-text>
+          <mj-text font-size="14" align="center">
+            <%= I18n.t('gigafood.email') %>
+          </mj-text>
+          <mj-text font-size="14" align="center">
+            <%= I18n.t('gigafood.phone_number') %>
+          </mj-text>
+          <mj-spacer height="10px" />
+        </mj-column>
+      </mj-section>
+    </mj-container>
+  </mj-body>
+</mjml>

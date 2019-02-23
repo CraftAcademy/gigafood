@@ -24,11 +24,19 @@ module Gigafood
       generate.controller_specs false
     end
 
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: :get
+      end
+    end
+
     config.i18n.available_locales = :en
     config.i18n.default_locale = :en
 
     config.generators.system_tests = nil
 
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+    config.assets.precompile += %w(bootstrap.css)
   end
 end

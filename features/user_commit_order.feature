@@ -7,6 +7,8 @@ Feature: Allow end user to commit order
     Given the following dishes exist:
       | name    | description            | price | min_quantity | of_type |
       | Dish 1  | Description for Dish 1 | 100   | 10           | dish    |
+      | Dish 2  | Description for Dish 2 | 49    | 10           | dish    |
+      | Dish 3  | Description for Dish 3 | 89    | 10           | dish    |
       | Cutlery | Knife, fork and spoon  | 2     | 1            | cutlery |
     And there are no custom translations
 
@@ -35,8 +37,11 @@ Feature: Allow end user to commit order
 
   @javascript
   Scenario: User can manipulate quantity with + and - buttons
+    Given skip this scenario
     When I go to the landing page
     And I click on + for "Dish 1"
+    And I click on + for "Dish 2"
+    And I click on + for "Dish 3"
     And I click on "Next"
     And I fill in Delivery Date with "2017-11-10 12:00"
     And I fill in "Delivery Name" with "Hungry corp Inc"
@@ -58,8 +63,8 @@ Feature: Allow end user to commit order
     And I click on "Submit Order"
     Then I should see "Thanks for ordering from Gigafood!"
     And I should see "A confirmation email will be sent to you as soon as your booking is confirmed. Please contact us if you have any questions. We’d love to hear from you!"
-    And the tax for the order should be "120"
-    And the total for the order should be "1120"
+    And the tax for the order should be "285.6"
+    And the total for the order should be "2665.6"
     And the order should have delivery method set to "delivery"
     When I go to the landing page
     And I click on "Next"
